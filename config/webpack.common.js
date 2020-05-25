@@ -16,7 +16,7 @@ module.exports = {
 
   output: {
     path: helpers.root("dist"),
-    publicPath: "/"
+    publicPath: "http://localhost:8080/"
   },
 
   resolve: {
@@ -71,34 +71,18 @@ module.exports = {
       //     }
       //   ]
       // },
-      // {
-      //   test: /\.gif$/,
-      //   loader: "url-loader?limit=10000&mimetype=image/gif"
-      // },
-      // {
-      //   test: /\.jpg$/,
-      //   loader: "url-loader?limit=10000&mimetype=image/jpg"
-      // },
-      // {
-      //   test: /\.png$/,
-      //   loader: "url-loader?limit=10000&mimetype=image/png"
-      // },
-      // {
-      //   test: /\.svg/,
-      //   loader: "url-loader?limit=26000&mimetype=image/svg+xml"
-      // },
-
-      // {
-      //   test: /\.(eot|ttf|wav|mp3|mp4)$/,
-      //   loader: "file-loader"
-      // }
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        include: helpers.root("client/public/assets/img"),
+        loader: "url-loader?limit=30000&name=img/[name].[ext]"
+      } // inline base64 URLs for <=30k images, direct URLs for the rest
     ]
   },
 
-  // target: "node",
-  // node: {
-  //   fs: "empty"
-  // },
+  target: "node",
+  node: {
+    fs: "empty"
+  },
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

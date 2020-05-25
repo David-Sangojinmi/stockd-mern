@@ -9,14 +9,14 @@ module.exports = merge(commonConfig, {
   mode: "development",
 
   entry: {
-    app: ["webpack-hot-middleware/client?reload=true"]
+    'app': ["webpack-hot-middleware/client?reload=true"]
   },
 
   // Insert
-  target: "node",
-  node: {
-    fs: "empty"
-  },
+  // target: "node",
+  // node: {
+  //   fs: "empty"
+  // },
   // externals: {
   //   fs: "commonjs fs",
   //   path: "commonjs path"
