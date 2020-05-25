@@ -1,0 +1,214 @@
+@charset "UTF-8";
+
+@import 'vendor/normalize';
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #666666;
+}
+
+#coloured {
+    color: #e2615b;
+}
+
+header {
+    background-color: rgb(34, 34, 34);
+    font-size: 16px;
+    color: rgb(238, 238, 238);
+}
+
+.navlink {
+    font-family: Poppins;
+    color: rgb(247, 247, 247);
+    text-decoration: none;
+}
+
+// #home {
+//     background-image: url(../../public/assets/img/background.jpg);
+// }
+
+.home-text {
+    color: #151515;
+}
+
+.bg-no-repeat {
+    background-repeat: no-repeat;
+}
+
+.bg-cover {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -ms-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.bg-fixed {
+    background-attachment: fixed;
+}
+
+.full-screen {
+    min-height: 100vh;
+}
+
+.home-banner-01 .home-text {
+  margin: 70px 0 0;
+}
+
+.home-banner-01 .container {
+  position: relative;
+  z-index: 1;
+}
+
+.home-banner-01 h2{
+  // color: #fff;
+  font-size: 40px;
+  font-weight: 400;
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.home-banner-01 h1 {
+  // color: #fff;
+  font-size: 90px;
+  font-weight: 600;
+  text-align: left;
+  margin: 0 0 20px;
+  line-height: 90px;
+}
+.home-banner-01 p{
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 40px;
+}
+
+@media(max-width: 991px){
+  .home-banner-01 h4 {
+    font-size: 16px;
+  }
+  .home-banner-01 h5 {
+    font-size: 40px;
+    line-height: 40px;
+    margin: 0 0 10px;
+  }
+  .home-banner-01 p {
+    font-size: 16px;
+    margin: 0 0 25px;
+  }
+}
+
+#stack-text {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.social-icons {
+    margin: 0;
+    padding: 0;
+}
+
+.social-icons li {
+    display: inline-block;
+    vertical-align: top;
+    list-style: none;
+}
+
+.social-icons li a {
+    display: block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    color: #333;
+    border-radius: 50%;
+    -webkit-transition: ease all 0.3s;
+    -moz-transition: ease all 0.3s;
+    -o-transition: ease all 0.3s;
+    transition: ease all 0.3s;
+}
+
+.footer {
+  background: #151515;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.footer p {
+  margin: 10px 0 0;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.68);
+  font-weight: 300;
+}
+
+.footer p a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer .footer-logo {
+  font-size: 30px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.footer .footer-logo span {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.footer .footer-logo span span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 11px;
+  right: -8px;
+  float: left;
+  background: #fff;
+}
+
+.footer .social-icons {
+  padding: 15px 0;
+}
+
+.footer .social-icons li a {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  color: #a5a5a5;
+  text-decoration: none; // Once you get footer icons delete this
+}
+
+.h7 {
+    font-size: 14px;
+    font-weight: 500;
+}
+.h7 span {
+    color: #e8e8e8;
+}
+
+@media(max-width: 991px){
+  .footer {
+    padding: 50px 0;
+  }
+}
+@media(max-width: 767px){
+  .footer {
+    padding: 30px 0;
+  }
+}
+
+.loadingDiv {
+    border: 5px outset red;
+    background-color: lightblue;
+    text-align: center;
+}
