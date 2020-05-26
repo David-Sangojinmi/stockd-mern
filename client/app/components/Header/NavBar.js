@@ -1,26 +1,27 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link as NavLink } from 'react-router-dom';
+import { HashLink as Link } from "react-router-hash-link";
 
 const Navbar = () => (
   <header>
     <nav>
       <div>
-        <Link className="navtitle" to="/">
+        <NavLink className="navtitle" to="/">
           Stock'd
-        </Link>
+        </NavLink>
 
-        <Link className="navlink" to="#about">
+        <Link className="navlink" to="/#about">
           About
         </Link>
 
-        <Link className="navlink" to="#feedback">
+        <Link className="navlink" to="/#feedback">
           Feedback
         </Link>
 
-        <Link className="navlink" to="/account">
+        <NavLink className="navlink" to="/account">
           Sign In
-        </Link>
+        </NavLink>
       </div>
     </nav>
   </header>
