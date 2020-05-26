@@ -4,13 +4,44 @@
 
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
 
+/*---------------------------------
+* Common styling
+-----------------------------------*/
 body {
-    font-family: 'Poppins', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.5;
-    color: #666666;
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  // font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #666666;
 }
+
+img {
+  max-width: 100%;
+}
+
+.section {
+  padding: 90px 0;
+  position: relative;
+}
+@media (max-width: 991px){
+ .section {
+    padding: 60px 0;
+  } 
+}
+@media (max-width: 767px){
+ .section {
+    padding: 40px 0;
+  } 
+}
+
+.gray-bg {
+  background: #f7f6ff;
+}
+
+/*
+*
+*/
 
 #coloured {
     color: #e2615b;
@@ -33,7 +64,7 @@ header {
 // }
 
 .home-text {
-    color: #151515;
+    color: #fff;
 }
 
 .bg-no-repeat {
@@ -103,10 +134,135 @@ header {
   }
 }
 
-#stack-text {
-    font-size: 15px;
-    font-weight: 600;
+/*-----------------------------------------
+*  About Us
+-----------------------------------------*/
+
+.about-img {
+  min-height: 400px;
+  height: 100%;
+  background-position: top center;
 }
+
+.about-box {
+  padding: 0 5%;
+}
+// .about-box .btn-bar {
+//   margin-top: 35px;
+// }
+.about-project {
+  margin-bottom: 25px;
+}
+.about-project h6 {
+  color: #292929;
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin: 0px 0 10px;
+  font-weight: 400;
+}
+
+.about-project h2 {
+  color: #292929;
+  font-size: 30px;
+  letter-spacing: 2px;
+  margin: 0 0 25px;
+  font-weight: 700;
+}
+@media(max-width: 991px){
+  .about-box {
+    padding: 40px 0 0;
+  }
+}
+@media(max-width: 767px) {
+  .about-project h6 {
+    font-size: 13px;
+  }
+  .about-project h2 {
+    margin: 0 0 20px;
+    font-size: 22px;
+  }
+}
+
+/*-----------------------------------------
+*  Feature
+-----------------------------------------*/
+.feature-box {
+  position: relative;
+  padding-left: 70px;
+  margin: 20px 0;
+}
+
+.feature-box .icon {
+  font-size: 22px;
+  position: absolute;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 5px;
+  line-height: 50px;
+  color: #fff;
+  background: #292929;
+}
+
+.feature-box h5 {
+  color: #292929;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin: 0 0 10px;
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+}
+
+.feature-box p {
+  margin: 0;
+}
+
+/*feature-box-02*/
+
+.feature-box-02 {
+  padding: 35px 8%;
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  margin: 15px 0;
+  border-radius: 5px;
+  box-shadow: 0px 1px 27px -3px rgba(0, 0, 0, 0.2);
+}
+
+.feature-box-02 .icon {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 50px;
+  color: #000;
+  margin-bottom: 30px;
+  background: #fff;
+}
+
+.feature-box-02 h5 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.feature-box-02 p {
+  margin: 0;
+  line-height: 24px;
+}
+
+
+@media (max-width: 991px){
+  .feature-box-02 {
+    margin:15px 0;
+  }
+}
+
+/*-------------------------------
+* Social Icons and Footer
+-------------------------------*/
 
 .social-icons {
     margin: 0;
@@ -185,15 +341,6 @@ header {
   text-align: center;
   line-height: 40px;
   color: #a5a5a5;
-  text-decoration: none; // Once you get footer icons delete this
-}
-
-.h7 {
-    font-size: 14px;
-    font-weight: 500;
-}
-.h7 span {
-    color: #e8e8e8;
 }
 
 @media(max-width: 991px){
@@ -205,6 +352,27 @@ header {
   .footer {
     padding: 30px 0;
   }
+}
+
+/*------------------------------------
+*  Self-created styling
+------------------------------------*/
+#home {
+    background-color: #151515;
+}
+
+#stack-text {
+    font-style: normal;
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.h7 {
+    font-size: 14px;
+    font-weight: 500;
+}
+.h7 span {
+    color: #e8e8e8;
 }
 
 .loadingDiv {
