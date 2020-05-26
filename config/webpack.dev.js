@@ -1,7 +1,7 @@
-const webpack = require('webpack');
-const merge = require('webpack-merge');
+const webpack = require("webpack");
+const merge = require("webpack-merge");
 
-const commonConfig = require('./webpack.common');
+const commonConfig = require("./webpack.common");
 
 module.exports = merge(commonConfig, {
   devtool: "eval-source-map",
@@ -9,22 +9,11 @@ module.exports = merge(commonConfig, {
   mode: "development",
 
   entry: {
-    'app': ["webpack-hot-middleware/client?reload=true"]
+    app: ["webpack-hot-middleware/client?reload=true"]
   },
 
-  // Insert
-  // target: "node",
-  // node: {
-  //   fs: "empty"
-  // },
-  // externals: {
-  //   fs: "commonjs fs",
-  //   path: "commonjs path"
-  // },
-  //
-
   output: {
-    filename: 'js/[name].js',
+    filename: "js/[name].js",
     chunkFilename: "[id].chunk.js"
   },
 
