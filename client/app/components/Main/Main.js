@@ -1,15 +1,12 @@
 import React from "react";
 // import background from "../../../public/assets/img/background.jpg";
 // import bg2 from "../../../public/assets/img/background2.jpg";
-import loader from "sass-loader";
+//           import loader from "sass-loader";
 // import { urlencoded } from 'express';
 
 const Main = () => (
   <>
-    <section
-      id="home"
-      className="home-banner-01 bg-no-repeat bg-cover bg-fixed home-bg"
-    >
+    <section id="home" className="home-banner-01 bg-no-repeat bg-cover bg-fixed home-bg">
       <div className="container">
         <div className="row full-screen align-items-center">
           <div className="col-12 col-md-12 text-center">
@@ -26,37 +23,44 @@ const Main = () => (
     <section id="about" className="section gray-bg">
       <div className="container">
         <div className="row">
-          <div className="col-md-12 col-lg-5">
+          <div className="col-md-12 col-lg-7">
             <div className="about-box">
-              <div className="about-me">
+              <div className="about-project">
                 <h6>Welcome</h6>
                 <h2>
                   About <span id="coloured">The Project</span>
                 </h2>
                 <p>
-                  "Currently I am a full-time student based in London. Since an early age, I have
-                  been a creative and found it fascinating how we are able to create complexity from
-                  basic components. Ranging from origami, to woodworks, and websites, I enjoy the
-                  process of going from concept to realisation and this developed into a passion for
-                  technology. Technology allows us to explore some of the worlds most important
-                  problems, and provide effective solutions. Recently, my interest has piqued in
-                  machine learning due to the wide impact it is having in so many fields and
-                  everyday life."
+                  Stock'd is a stock tracker application designed and produced by me,{" "}
+                  <span id="coloured">David Sangojinmi</span>. I am a computer science student with
+                  keen interests in full-stack web development, machine learning and financial
+                  technology. This project was a way for me to explore my interest in
+                  web-development and financial technology.
                 </p>
                 <p>
-                  " Machine learning is a fast paced and innovative field with research being
-                  completed almost constantly. I am trying to broaden and deepen my knowledge by
-                  utilising any available resources. Some of which include: Coursera Machine
-                  Learning, YouTube courses, the School of AI and a host of books and research
-                  papers. My objective is to become sufficiently adept with machine learning
-                  technologies and use this knowledge to solve problems and help people be more
-                  efficient."
+                  Prior to this, I'd had no experience with using any web development stacks or
+                  frameworks in my projects. But I did have some experience with using Javascript,
+                  particularly for building small scale games. Check out my game Odyss3y{" "}
+                  <a href="http://davidsangojinmi.ml/ODYSS3Y">
+                    <span id="coloured">here</span>
+                  </a>
+                  . This greatly influenced the tech stack I decided to use for this project. To use
+                  the application and start tracking the stocks of your favourite companies, follow
+                  the steps below.
                 </p>
+                <p>1. </p>
+                <p>2. </p>
+                <p>3. </p>
+                <p>4. </p>
               </div>
-              <div className="tech-stack">
-                <h6>Welcome</h6>
+            </div>
+          </div>
+          <div className="col-md-12 col-lg-5">
+            <div className="about-box">
+              <div className="about-project">
+                <h6>The</h6>
                 <h2>
-                  The <span id="coloured">Tech Stack</span>
+                  Tech <span id="coloured">Stack</span>
                 </h2>
                 <p>
                   Stock'd is built using the <span id="coloured">MERN</span> stack. I decided to
@@ -64,9 +68,11 @@ const Main = () => (
                   and MERN is suited to developing smaller scale applications, like this.
                 </p>
                 <div className="row">
-                  <div className="col-md-6">
+                  <div className="col-md-12">
                     <div className="feature-box">
-                      <i id="stack-text"></i>
+                      <i className="icon theme-bg" id="stack-text">
+                        M
+                      </i>
                       <div className="feature-content">
                         <h5>MongoDB</h5>
                         <p>
@@ -76,18 +82,22 @@ const Main = () => (
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-6">
+                  <div className="col-md-12">
                     <div className="feature-box">
-                      <i id="stack-text"></i>
+                      <i className="icon theme-bg" id="stack-text">
+                        E
+                      </i>
                       <div className="feature-content">
                         <h5>Express.js</h5>
                         <p>A back-end application framework. Fase and minimalist.</p>
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-6">
+                  <div className="col-md-12">
                     <div className="feature-box">
-                      <i id="stack-text"></i>
+                      <i className="icon theme-bg" id="stack-text">
+                        R
+                      </i>
                       <div className="feature-content">
                         <h5>React</h5>
                         <p>
@@ -97,9 +107,11 @@ const Main = () => (
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-6">
+                  <div className="col-md-12">
                     <div className="feature-box">
-                      <i id="stack-text"></i>
+                      <i className="icon theme-bg" id="stack-text">
+                        N
+                      </i>
                       <div className="feature-content">
                         <h5>Node.js</h5>
                         <p>
