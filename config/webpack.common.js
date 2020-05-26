@@ -16,7 +16,7 @@ module.exports = {
 
   output: {
     path: helpers.root("dist"),
-    publicPath: "http://localhost:8080/"
+    publicPath: "/"
   },
 
   resolve: {
@@ -57,31 +57,8 @@ module.exports = {
             "sass-loader"
           ]
         })
-      },
-
-      // Image files
-      // {
-      //   test: /\.(png|jpg|gif)$/i,
-      //   use: [
-      //     {
-      //       loader: "url-loader",
-      //       options: {
-      //         limit: 10000
-      //       }
-      //     }
-      //   ]
-      // },
-      {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        include: helpers.root("client/public/assets/img"),
-        loader: "url-loader?limit=30000&name=img/[name].[ext]"
-      } // inline base64 URLs for <=30k images, direct URLs for the rest
+      }
     ]
-  },
-
-  target: "node",
-  node: {
-    fs: "empty"
   },
 
   plugins: [
