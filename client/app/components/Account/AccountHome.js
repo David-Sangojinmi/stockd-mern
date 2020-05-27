@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "whatwg-fetch";
-import SignInForm from "./SignIn";
-import SignUpForm from "./SignUp";
+import SignInForm from "./SignInForm";
+import Account from "./Account";
 import Loading from "./Loading";
 
 import { getFromStorage, setInStorage } from "../../utils/storage";
@@ -13,28 +13,18 @@ class AccountHome extends Component {
     this.state = {
       isLoading: true,
       token: "",
-      signUpError: "",
       signInError: "",
       signInEmail: "",
-      signInPassword: "",
-      signUpFirstName: "",
-      signUpLastName: "",
-      signUpEmail: "",
-      signUpPassword: ""
+      signInPassword: ""
     };
 
     this.textchange = {
       onTextboxChangeSignInEmail: this.onTextboxChangeSignInEmail.bind(this),
-      onTextboxChangeSignInPassword: this.onTextboxChangeSignInPassword.bind(this),
-      onTextboxChangeSignUpEmail: this.onTextboxChangeSignUpEmail.bind(this),
-      onTextboxChangeSignUpPassword: this.onTextboxChangeSignUpPassword.bind(this),
-      onTextboxChangeSignUpFirstName: this.onTextboxChangeSignUpFirstName.bind(this),
-      onTextboxChangeSignUpLastName: this.onTextboxChangeSignUpLastName.bind(this)
+      onTextboxChangeSignInPassword: this.onTextboxChangeSignInPassword.bind(this)
     };
 
     this.useraction = {
       onSignIn: this.onSignIn.bind(this),
-      onSignUp: this.onSignUp.bind(this),
       logout: this.logout.bind(this)
     };
   }
@@ -65,48 +55,6 @@ class AccountHome extends Component {
         isLoading: false
       });
     }
-  }
-
-  onSignUp() {
-    // Grab state
-    const { signUpFirstName, signUpLastName, signUpEmail, signUpPassword } = this.state;
-
-    this.setState({
-      isLoading: true
-    });
-
-    // Post request to backend
-    fetch("/api/account/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        firstName: signUpFirstName,
-        lastName: signUpLastName,
-        email: signUpEmail,
-        password: signUpPassword
-      })
-    })
-      .then(res => res.json())
-      .then(json => {
-        if (json.success) {
-          this.setState({
-            signUpError: json.message,
-            isLoading: false,
-            // Redirect them to login page rather than \/
-            signUpFirstName: "",
-            signUpLastName: "",
-            signUpEmail: "",
-            signUpPassword: ""
-          });
-        } else {
-          this.setState({
-            signUpError: json.message,
-            isLoading: false
-          });
-        }
-      });
   }
 
   onSignIn() {
@@ -193,30 +141,6 @@ class AccountHome extends Component {
     });
   }
 
-  onTextboxChangeSignUpEmail(event) {
-    this.setState({
-      signUpEmail: event.target.value
-    });
-  }
-
-  onTextboxChangeSignUpPassword(event) {
-    this.setState({
-      signUpPassword: event.target.value
-    });
-  }
-
-  onTextboxChangeSignUpFirstName(event) {
-    this.setState({
-      signUpFirstName: event.target.value
-    });
-  }
-
-  onTextboxChangeSignUpLastName(event) {
-    this.setState({
-      signUpLastName: event.target.value
-    });
-  }
-
   render() {
     const {
       isLoading,
@@ -240,23 +164,13 @@ class AccountHome extends Component {
               textChange={this.textchange}
               userAction={this.useraction}
             />
-            <br />
-            <br />
-            <SignUpForm
-              state={this.state}
-              textChange={this.textchange}
-              userAction={this.useraction}
-            />
           </div>
         </>
       );
     }
 
     return (
-      <div>
-        <p>Account</p>
-        <button onClick={this.useraction.logout}>Logout</button>
-      </div>
+      <Account />
     );
   }
 }
