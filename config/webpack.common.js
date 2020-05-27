@@ -57,6 +57,26 @@ module.exports = {
             "sass-loader"
           ]
         })
+      },
+
+      // Image files
+      {
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        loader: "url-loader",
+        options: {
+          limit: 10000,
+          // name: "static/img/[name].[hash:7].[ext]"
+        }
+      },
+
+      // Media files
+      {
+        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+        loader: "url-loader",
+        options: {
+          limit: 10000,
+          // name: "static/media/[name].[hash:7].[ext]"
+        }
       }
     ]
   },
