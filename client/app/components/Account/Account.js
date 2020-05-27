@@ -1,9 +1,19 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "whatwg-fetch";
 import Loading from "./Loading";
+import Stock from "./Stock";
+import db1 from "../../../public/assets/img/db1.jpg";
+import db2 from "../../../public/assets/img/db2.jpg";
+import db3 from "../../../public/assets/img/db3.jpg";
+var bgStyle = {
+  backgroundImage: "url(" + db1 + ")"
+};
+var logoutStyle = {
+  float: "right"
+};
 
 import { getFromStorage, setInStorage } from "../../utils/storage";
-import { urlencoded } from "express";
 
 class Account extends Component {
   constructor(props) {
@@ -19,7 +29,6 @@ class Account extends Component {
     // };
 
     this.useraction = {
-      // onSignIn: this.onSignIn.bind(this),
       logout: this.logout.bind(this)
     };
   }
@@ -96,12 +105,23 @@ class Account extends Component {
     }
 
     return (
-      <section className="section gray-bg-2">
-        <div className="col-md-12">
-          <p>Account</p>
-          <button className="m-btn m-btn-theme" onClick={this.useraction.logout}>
-            Logout
-          </button>
+      <section className="section bg-no-repeat bg-cover bg-fixed" style={bgStyle}>
+        <div className="container" style={{color: "white"}}>
+          <div className="row">
+            <p>Welcome back!</p>
+            <Link to="/">
+              <button
+                className="m-btn m-btn-theme"
+                style={{ logoutStyle }}
+                onClick={this.useraction.logout}
+              >
+                Logout
+              </button>
+            </Link>
+          </div>
+          <div className="row">
+            <Stock />
+          </div>
         </div>
       </section>
     );
