@@ -17,6 +17,8 @@ node_modules
 logs
 *.log
 npm-debug.log*
+/.pnp
+.pnp.js
 
 # OS stuff
 Desktop.ini
