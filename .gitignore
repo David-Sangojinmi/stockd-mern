@@ -1,3 +1,8 @@
+.cache
+.env.*
+.env
+response.json
+
 # Compiled files
 dist/
 
