@@ -19,7 +19,7 @@ const Navbar = () => (
           Feedback
         </Link>
 
-        <NavLink className="navlink" to="/account">
+        <NavLink className="navlink" to="/signin">
           Sign In
         </NavLink>
       </div>

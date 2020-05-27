@@ -2,7 +2,7 @@ import React from "react";
 
 const About = () => (
   <>
-    <section id="about" className="section gray-bg">
+    <section id="about" className="section gray-bg-1">
       <div className="container">
         <div className="row">
           <div className="col-md-12 col-lg-7">
@@ -23,9 +23,9 @@ const About = () => (
                   Prior to this, I'd had no experience with using any web development stacks or
                   frameworks in my projects. But I did have some experience with using Javascript,
                   particularly for building small scale games. Check out my game Odyss3y{" "}
-                  <a href="http://davidsangojinmi.ml/ODYSS3Y">
-                    <span id="coloured">here</span>
-                  </a>
+                  <span id="coloured">
+                    <a href="http://davidsangojinmi.ml/ODYSS3Y">here</a>
+                  </span>
                   . This greatly influenced the tech stack I decided to use for this project. To use
                   the application and start tracking the stocks of your favourite companies, follow
                   the steps below.
