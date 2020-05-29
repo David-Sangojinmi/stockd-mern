@@ -3,11 +3,10 @@ import { Link } from "react-router-dom";
 import "whatwg-fetch";
 import Loading from "./Loading";
 import Stock from "./Stock";
-import db1 from "../../../public/assets/img/db1.jpg";
-import db2 from "../../../public/assets/img/db2.jpg";
+// import StockAxios from "./StockAxios";
 import db3 from "../../../public/assets/img/db3.jpg";
 var bgStyle = {
-  backgroundImage: "url(" + db1 + ")"
+  background: `url(${db3})`
 };
 var logoutStyle = {
   float: "right"
@@ -105,25 +104,30 @@ class Account extends Component {
     }
 
     return (
-      <section className="section bg-no-repeat bg-cover bg-fixed" style={bgStyle}>
-        <div className="container" style={{color: "white"}}>
-          <div className="row">
-            <p>Welcome back!</p>
-            <Link to="/">
-              <button
-                className="m-btn m-btn-theme"
-                style={{ logoutStyle }}
-                onClick={this.useraction.logout}
-              >
-                Logout
-              </button>
-            </Link>
+      <>
+        <section className="dashboard-section bg-no-repeat bg-cover bg-fixed" style={bgStyle}>
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12 col-lg-8 gray-bg-1">
+                <h1>Welcome back!</h1>
+              </div>
+              <div className="col-md-12 col-lg-4 gray-bg-1">
+                <Link to="/">
+                  <button
+                    className="m-btn m-btn-theme"
+                    style={{ logoutStyle }}
+                    onClick={this.useraction.logout}
+                  >
+                    Logout
+                  </button>
+                </Link>
+              </div>
+            </div>
           </div>
-          <div className="row">
-            <Stock />
-          </div>
-        </div>
-      </section>
+          <Stock />
+        </section>
+        {/* <StockAxios /> */}
+      </>
     );
   }
 }
