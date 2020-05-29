@@ -40,9 +40,6 @@ class Stock extends Component {
       StockTicker: this.state.Value
     });
 
-    // let StockTicker = this.state.value;
-    // this.fetchStock();
-
     const API_KEY = process.env.API_KEY;
     let StockSymbol = this.state.Value;
 
@@ -65,7 +62,7 @@ class Stock extends Component {
         useQueryString: true
       },
       params: {
-        symbol: StockSymbol, // this.state.StockSymbol
+        symbol: StockSymbol,
         function: "TIME_SERIES_DAILY_ADJUSTED"
       }
     })
@@ -109,104 +106,6 @@ class Stock extends Component {
   //   componentWillUnmount() {
   //     // this._isMounted = false;
   //   }
-
-  //   fetchStock() {
-  //     const pointerToThis = this;
-  //     console.log(pointerToThis);
-  //     const API_KEY = process.env.API_KEY;
-  //     // let StockSymbol = pointerToThis.state.StockSymbol;
-
-  //     // Make the output size toggable and then feed this as a variable
-  //     let stockChartXValuesFunction = [];
-  //     let closeYValuesFunction = [];
-  //     let openYValuesFunction = [];
-  //     let highYValuesFunction = [];
-  //     let lowYValuesFunction = [];
-  //     let lastRefreshedFunction = [];
-
-  //     // fetch(API_CALL)
-  //     //   .then(function(response) {
-  //     //     return response.json();
-  //     //   })
-  //     //   .then(function(data) {
-  //     //       console.log(data);
-
-  //     //     for (var key in data["Time Series (Daily)"]) {
-  //     //       stockChartXValuesFunction.push(key);
-  //     //       // Adjust this to get any more data fields
-  //     //       closeYValuesFunction.push(data["Time Series (Daily)"][key]["4. close"]);
-  //     //       openYValuesFunction.push(data["Time Series (Daily)"][key]["1. open"]);
-  //     //       highYValuesFunction.push(data["Time Series (Daily)"][key]["2. high"]);
-  //     //       lowYValuesFunction.push(data["Time Series (Daily)"][key]["3. low"]);
-
-  //     //       // console.log(stockChartXValuesFunction);
-  //     //       if (this._isMounted) {
-  //     //         pointerToThis.setState({
-  //     //             stockChartXValues: stockChartXValuesFunction,
-  //     //             closeYValues: closeYValuesFunction,
-  //     //             openYValues: openYValuesFunction,
-  //     //             highYValues: highYValuesFunction,
-  //     //             lowYValues: lowYValuesFunction
-  //     //         });
-  //     //       }
-  //     //     }
-  //     //   });
-
-  //     axios({
-  //       method: "GET",
-  //       url: "https://alpha-vantage.p.rapidapi.com/query",
-  //       headers: {
-  //         "content-type": "application/octet-stream",
-  //         "x-rapidapi-host": "alpha-vantage.p.rapidapi.com",
-  //         "x-rapidapi-key": "ffe26f8252msh9f89e69954ac6b9p1164bejsn5d8cd74943f0",
-  //         useQueryString: true
-  //       },
-  //       params: {
-  //         symbol: this.state.StockSymbol, // this.state.StockSymbol
-  //         function: "TIME_SERIES_DAILY_ADJUSTED"
-  //       }
-  //     })
-  //       .then(response => {
-  //         console.log(response.data);
-
-  //         for (var key in response.data["Time Series (Daily)"]) {
-  //           stockChartXValuesFunction.push(key);
-  //           // Adjust this to get any more data fields
-  //           closeYValuesFunction.push(response.data["Time Series (Daily)"][key]["4. close"]);
-  //           openYValuesFunction.push(response.data["Time Series (Daily)"][key]["1. open"]);
-  //           highYValuesFunction.push(response.data["Time Series (Daily)"][key]["2. high"]);
-  //           lowYValuesFunction.push(response.data["Time Series (Daily)"][key]["3. low"]);
-
-  //           pointerToThis.setState({
-  //             stockChartXValues: stockChartXValuesFunction,
-  //             closeYValues: closeYValuesFunction,
-  //             openYValues: openYValuesFunction,
-  //             highYValues: highYValuesFunction,
-  //             lowYValues: lowYValuesFunction
-  //           });
-  //         }
-
-  //         lastRefreshedFunction.push(response.data["Meta Data"]["3. Last Refreshed"]);
-  //         pointerToThis.setState({
-  //           lastRefreshed: lastRefreshedFunction
-  //         });
-  //       })
-  //       .catch(error => {
-  //         console.log(error);
-  //       });
-  //   }
-
-  //   onStockSymbolChange(event) {
-  //     this.setState({
-  //       StockSymbol: event.target.value
-  //     });
-  //   }
-
-  /*--------------------------------
-  *  Recharts functions 
-  --------------------------------*/
-
-  //
 
   render() {
     const Value = this.state.Value;
