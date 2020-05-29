@@ -3,6 +3,10 @@ import "whatwg-fetch";
 import SignInForm from "./SignInForm";
 import Account from "./Account";
 import Loading from "./Loading";
+import db1 from "../../../public/assets/img/db1.jpg";
+var bgStyle = {
+  background: `url(${db1})`
+};
 
 import { getFromStorage, setInStorage } from "../../utils/storage";
 
@@ -158,7 +162,7 @@ class AccountHome extends Component {
     if (!token) {
       return (
         <>
-          <div>
+          <div className="dashboard-section bg-no-repeat bg-cover bg-fixed" style={bgStyle}>
             <SignInForm
               state={this.state}
               textChange={this.textchange}
