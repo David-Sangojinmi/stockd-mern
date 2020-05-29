@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import "whatwg-fetch";
 import SignUpForm from "./SignUpForm";
 import Loading from "./Loading";
+import db2 from "../../../public/assets/img/db2.jpg";
+var bgStyle = {
+  background: `url(${db2})`
+};
 
 import { getFromStorage, setInStorage } from "../../utils/storage";
 
@@ -142,7 +146,7 @@ class SignUp extends Component {
     if (!token) {
       return (
         <>
-          <div>
+          <div className="dashboard-section bg-no-repeat bg-cover bg-fixed" style={bgStyle}>
             <SignUpForm
               state={this.state}
               textChange={this.textchange}
