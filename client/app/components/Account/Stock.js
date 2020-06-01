@@ -15,6 +15,7 @@ class Stock extends Component {
       openYValues: [],
       highYValues: [],
       lowYValues: [],
+      chartName: [],
       Symbol: [],
       lastRefreshed: [],
 
@@ -40,7 +41,9 @@ class Stock extends Component {
       StockTicker: this.state.Value
     });
 
-    const API_KEY = process.env.API_KEY;
+    // const RAPID_API_KEY = "${process.env.RAPID_API_KEY}";
+    // const AV_API_KEY = process.env.AV_API_KEY;
+    let API_KEY = this.state.RAPID_API_KEY;
     let StockSymbol = this.state.Value;
 
     // Make the output size toggable and then feed this as a variable
@@ -49,6 +52,7 @@ class Stock extends Component {
     let openYValuesFunction = [];
     let highYValuesFunction = [];
     let lowYValuesFunction = [];
+    let chartNameFunction = [];
     let SymbolFunction = [];
     let lastRefreshedFunction = [];
 
@@ -86,11 +90,13 @@ class Stock extends Component {
           });
         }
 
+        chartNameFunction.push(response.data["Meta Data"]["1. Information"]);
         lastRefreshedFunction.push(response.data["Meta Data"]["3. Last Refreshed"]);
         SymbolFunction.push(response.data["Meta Data"]["2. Symbol"]);
         this.setState({
-          lastRefreshed: lastRefreshedFunction,
-          Symbol: SymbolFunction
+          chartName: chartNameFunction,
+          Symbol: SymbolFunction,
+          lastRefreshed: lastRefreshedFunction
         });
       })
       .catch(error => {
@@ -146,7 +152,7 @@ class Stock extends Component {
                   width: 700,
                   height: 440,
                   title: {
-                    text: `Past 100 Days Daily Time Series`,
+                    text: `${this.state.chartName}`,
                     font: {
                       family: "Poppins",
                       size: 20,
