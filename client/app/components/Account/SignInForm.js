@@ -22,7 +22,7 @@ const SignInForm = ({ state, textChange, userAction }) => {
       />
       <br />
       <button onClick={userAction.onSignIn}>Sign In</button>
-      <p>Don't have an account? <Link to="/signup">Sign up</Link>.</p>
+      <p>Don't have an account? <Link to="/account/signup">Sign up</Link>.</p>
     </div>
   );
 };

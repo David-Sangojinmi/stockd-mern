@@ -36,7 +36,7 @@ const SignUpForm = ({ state, textChange, userAction }) => {
       <br />
       <button onClick={userAction.onSignUp}>Sign Up</button>
       <p>
-        Made an account? <Link to="/signin">Sign in</Link>.
+        Made an account? <Link to="/account/signin">Sign in</Link>.
       </p>
     </div>
   );
