@@ -23,8 +23,8 @@ render((
     <App>
       <Switch>
         <Route exact path="/" component={Main}/>
-        <Route path="/signin" component={AccountHome}/>
-        <Route path="/signup" component={SignUp}/>
+        <Route path="/account/signin" component={AccountHome}/>
+        <Route path="/account/signup" component={SignUp}/>
         <Route component={NotFound}/>
       </Switch>
     </App>
