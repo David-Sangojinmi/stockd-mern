@@ -41,9 +41,7 @@ class Stock extends Component {
       StockTicker: this.state.Value
     });
 
-    // const RAPID_API_KEY = "${process.env.RAPID_API_KEY}";
-    // const AV_API_KEY = process.env.AV_API_KEY;
-    let API_KEY = this.state.RAPID_API_KEY;
+    let RAPID_API_KEY = "ffe26f8252msh9f89e69954ac6b9p1164bejsn5d8cd74943f0";
     let StockSymbol = this.state.Value;
 
     // Make the output size toggable and then feed this as a variable
@@ -62,16 +60,18 @@ class Stock extends Component {
       headers: {
         "content-type": "application/octet-stream",
         "x-rapidapi-host": "alpha-vantage.p.rapidapi.com",
-        "x-rapidapi-key": "ffe26f8252msh9f89e69954ac6b9p1164bejsn5d8cd74943f0",
+        "x-rapidapi-key": RAPID_API_KEY,
         useQueryString: true
       },
       params: {
+        outputsize: "compact", // or "full" for all dp
         symbol: StockSymbol,
         function: "TIME_SERIES_DAILY_ADJUSTED"
       }
     })
       .then(response => {
         console.log(response.data);
+        console.log(`${process.env.RAPID_API_KEY}`);
 
         for (var key in response.data["Time Series (Daily)"]) {
           stockChartXValuesFunction.push(key);
