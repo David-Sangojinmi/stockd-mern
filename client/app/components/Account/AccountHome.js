@@ -89,9 +89,12 @@ class AccountHome extends Component {
             token: json.token,
             isLoading: false,
             // Redirect them to dashboard page rather than \/
+            
+            //
             signInEmail: "",
             signInPassword: ""
           });
+
         } else {
           this.setState({
             signInError: json.message,
@@ -175,6 +178,9 @@ class AccountHome extends Component {
 
     return (
       <Account />
+      // <>
+      //   <Link to="account/stockinfo"><button className="m-btn m-btn-theme">Check out stocks</button></Link>
+      // </>
     );
   }
 }
