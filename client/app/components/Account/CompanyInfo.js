@@ -9,12 +9,21 @@ class CompanyInfo extends Component {
     // this._isMounted = false;
 
     this.state = {
-      // Company information variables here
       Symbol: [],
-      lastRefreshed: [],
+
+      Fullname: [],
+      Currency: [],
+      Country: [],
+      Sector: [],
+      Industry: [],
+      Summary: [],
+      StockPrice: [],
+      Headquarters: [],
+      NumberOfEmployees: [],
+      Website: [],
 
       // For searchable
-      StockTicker: null,
+      // TickerSymbol: null,
       Value: ""
     };
 
@@ -32,58 +41,65 @@ class CompanyInfo extends Component {
     if (event) event.preventDefault();
     this.setState({
       Value: "",
-      StockTicker: this.state.Value
+      // TickerSymbol: this.state.Value
     });
 
     let RAPID_API_KEY = "ffe26f8252msh9f89e69954ac6b9p1164bejsn5d8cd74943f0";
-    let StockSymbol = this.state.Value;
+    let Symbol = this.state.Value;
 
-    // Function to get the company info and update the states
     let SymbolFunction = [];
-    let lastRefreshedFunction = [];
+    let FullnameFunction = [];
+    let CurrencyFunction = [];
+    let CountryFunction = [];
+    let SectorFunction = [];
+    let IndustryFunction = [];
+    let SummaryFunction = [];
+    let StockPriceFunction = [];
+    let HeadquartersFunction = [];
+    let NumberOfEmployeesFunction = [];
+    let WebsiteFunction = [];
 
     axios({
       method: "GET",
-      url: "https://alpha-vantage.p.rapidapi.com/query",
+      url: "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-profile",
       headers: {
         "content-type": "application/octet-stream",
-        "x-rapidapi-host": "alpha-vantage.p.rapidapi.com",
+        "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
         "x-rapidapi-key": RAPID_API_KEY,
         useQueryString: true
       },
       params: {
-        symbol: StockSymbol,
-        function: "TIME_SERIES_DAILY_ADJUSTED"
+        symbol: Symbol
       }
     })
       .then(response => {
         console.log(response.data);
-        console.log(`${process.env.RAPID_API_KEY}`);
 
-        for (var key in response.data["Time Series (Daily)"]) {
-          stockChartXValuesFunction.push(key);
-          // Adjust this to get any more data fields
-          closeYValuesFunction.push(response.data["Time Series (Daily)"][key]["4. close"]);
-          openYValuesFunction.push(response.data["Time Series (Daily)"][key]["1. open"]);
-          highYValuesFunction.push(response.data["Time Series (Daily)"][key]["2. high"]);
-          lowYValuesFunction.push(response.data["Time Series (Daily)"][key]["3. low"]);
+        FullnameFunction.push(response.data["price"]["longName"]);
+        CurrencyFunction.push(response.data["price"]["currencySymbol"]);
+        CountryFunction.push(response.data["assetProfile"]["country"]);
+        SectorFunction.push(response.data["assetProfile"]["sector"]);
+        IndustryFunction.push(response.data["assetProfile"]["industry"]);
+        SymbolFunction.push(response.data["symbol"]);
+        SummaryFunction.push(response.data["assetProfile"]["longBusinessSummary"]);
+        StockPriceFunction.push(response.data["price"]["regularMarketPrice"]["raw"]);
+        HeadquartersFunction.push(response.data["assetProfile"]["address1"]);
 
-          this.setState({
-            stockChartXValues: stockChartXValuesFunction,
-            closeYValues: closeYValuesFunction,
-            openYValues: openYValuesFunction,
-            highYValues: highYValuesFunction,
-            lowYValues: lowYValuesFunction
-          });
-        }
+        NumberOfEmployeesFunction.push(response.data["assetProfile"]["fullTimeEmployees"]);
+        WebsiteFunction.push(response.data["assetProfile"]["website"]);
 
-        chartNameFunction.push(response.data["Meta Data"]["1. Information"]);
-        lastRefreshedFunction.push(response.data["Meta Data"]["3. Last Refreshed"]);
-        SymbolFunction.push(response.data["Meta Data"]["2. Symbol"]);
         this.setState({
-          chartName: chartNameFunction,
+          Fullname: FullnameFunction,
+          Currency: CurrencyFunction,
+          Country: CountryFunction,
+          Sector: SectorFunction,
+          Industry: IndustryFunction,
           Symbol: SymbolFunction,
-          lastRefreshed: lastRefreshedFunction
+          Summary: SummaryFunction,
+          StockPrice: StockPriceFunction,
+          Headquarters: HeadquartersFunction,
+          NumberOfEmployees: NumberOfEmployeesFunction,
+          Website: WebsiteFunction
         });
       })
       .catch(error => {
@@ -113,41 +129,56 @@ class CompanyInfo extends Component {
               <p>AMZN</p>
               <p>FB</p>
               <p>GOOG</p>
-              <p>
+              {/* <p>
                 <strong>Current:</strong> <span id="coloured">{this.state.Symbol}</span>
-              </p>
+              </p> */}
             </div>
             <div className="col-md-12 col-lg-8 gray-bg-1">
-              <h4>Analyse Stock Data</h4>
+              <h4>Find Company Information</h4>
               <SearchBar value={Value} onChange={this.handleChange} onClick={this.handleClick} />
-              <h5>Symbol: {this.state.Symbol}</h5>
-              <p>Last refreshed: {this.state.lastRefreshed}</p>
-              <Plot
-                data={[
-                  {
-                    type: "candlestick",
-                    close: this.state.closeYValues,
-                    open: this.state.openYValues,
-                    high: this.state.highYValues,
-                    low: this.state.lowYValues,
-                    x: this.state.stockChartXValues,
-                    increasing: { line: { color: "green" } },
-                    decreasing: { line: { color: "red" } }
-                  }
-                ]}
-                layout={{
-                  width: 700,
-                  height: 440,
-                  title: {
-                    text: `${this.state.chartName}`,
-                    font: {
-                      family: "Poppins",
-                      size: 20,
-                      color: `#3e3e3e`
-                    }
-                  }
-                }}
-              />
+              <section className="section">
+                <div className="container">
+                  <h2>{this.state.Fullname}</h2>
+                  {/* <p>
+                    Stock Price: {this.state.Currency} {this.state.StockPrice}
+                  </p> */}
+                  <div className="row">
+                    <div className="col-md-12 col-lg-6">
+                      <p>
+                        <strong>Address:</strong> {this.state.Headquarters}
+                      </p>
+                      <p>
+                        <strong>Country:</strong> {this.state.Country}
+                      </p>
+                      <strong>Website:</strong>{" "}
+                      <span>
+                        <a href={this.state.Website}>{this.state.Website}</a>
+                      </span>
+                    </div>
+                    <div className="col-md-12 col-lg-6">
+                      <p>
+                        <strong>Sector:</strong> {this.state.Sector}
+                      </p>
+                      <p>
+                        <strong>Industry:</strong> {this.state.Industry}
+                      </p>
+                      <p>
+                        <strong>Full-time employees:</strong> {this.state.NumberOfEmployees}
+                      </p>
+                      <p>
+                        <strong>Stock Symbol:</strong> {this.state.Symbol}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-md-12">
+                      <p>
+                        <strong>Description:</strong> {this.state.Summary}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>
               <br />
             </div>
           </div>
