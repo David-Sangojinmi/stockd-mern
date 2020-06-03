@@ -64,7 +64,7 @@ class Stock extends Component {
         useQueryString: true
       },
       params: {
-        outputsize: "compact", // or "full" for all dp
+        outputsize: "full", // "compact" or "full"
         symbol: StockSymbol,
         function: "TIME_SERIES_DAILY_ADJUSTED"
       }
@@ -158,7 +158,65 @@ class Stock extends Component {
                       size: 20,
                       color: `#3e3e3e`
                     }
+                  },
+                  xaxis: {
+                    autorange: true,
+                    range: [
+                      this.state.stockChartXValues[0],
+                      this.state.stockChartXValues[this.state.stockChartXValues.length - 1]
+                    ],
+                    rangeselector: {
+                      buttons: [
+                        {
+                          count: 1,
+                          label: "1d",
+                          step: "day",
+                          stepmode: "backward"
+                        },
+                        {
+                          count: 5,
+                          label: "5d",
+                          step: "day",
+                          stepmode: "backward"
+                        },
+                        {
+                          count: 1,
+                          label: "1m",
+                          step: "month",
+                          stepmode: "backward"
+                        },
+                        {
+                          count: 6,
+                          label: "6m",
+                          step: "month",
+                          stepmode: "backward"
+                        },
+                        {
+                          count: 1,
+                          label: "1y",
+                          step: "year",
+                          stepmode: "backward"
+                        },
+                        {
+                          count: 5,
+                          label: "5y",
+                          step: "year",
+                          stepmode: "backward"
+                        },
+                        { label: "Max", step: "all" }
+                      ]
+                    },
+                    rangeslider: {
+                      range: [
+                        this.state.stockChartXValues[0],
+                        this.state.stockChartXValues[this.state.stockChartXValues.length - 1]
+                      ]
+                    },
+                    type: "date"
                   }
+                }}
+                config={{
+                  responsive: true
                 }}
               />
               <br />
