@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "whatwg-fetch";
 import Loading from "./Loading";
+import CompanyInfo from "./CompanyInfo";
 import Stock from "./Stock";
 // import StockAxios from "./StockAxios";
 import db3 from "../../../public/assets/img/db3.jpg";
@@ -124,9 +125,9 @@ class Account extends Component {
               </div>
             </div>
           </div>
+          <CompanyInfo />
           <Stock />
         </section>
-        {/* <StockAxios /> */}
       </>
     );
   }
