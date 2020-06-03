@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "whatwg-fetch";
+import Loading from "./Loading";
 import SignInForm from "./SignInForm";
 import Account from "./Account";
-import Loading from "./Loading";
 import db1 from "../../../public/assets/img/db1.jpg";
 var bgStyle = {
   background: `url(${db1})`
@@ -89,12 +89,9 @@ class AccountHome extends Component {
             token: json.token,
             isLoading: false,
             // Redirect them to dashboard page rather than \/
-            
-            //
             signInEmail: "",
             signInPassword: ""
           });
-
         } else {
           this.setState({
             signInError: json.message,
