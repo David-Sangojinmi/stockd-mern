@@ -120,7 +120,7 @@ class Stock extends Component {
       <>
         <div className="container">
           <div className="row">
-            <div className="col-md-12 col-lg-4 gray-bg-1">
+            <div className="col-md-12 col-lg-4 dashboard-bg">
               <h3>Companies</h3>
               <p>AAPL</p>
               <p>AMZN</p>
@@ -130,96 +130,109 @@ class Stock extends Component {
                 <strong>Current:</strong> <span id="coloured">{this.state.Symbol}</span>
               </p>
             </div>
-            <div className="col-md-12 col-lg-8 gray-bg-1">
-              <h4>Analyse Stock Data</h4>
-              <SearchBar value={Value} onChange={this.handleChange} onClick={this.handleClick} />
-              <h5>Symbol: {this.state.Symbol}</h5>
-              <p>Last refreshed: {this.state.lastRefreshed}</p>
-              <Plot
-                data={[
-                  {
-                    type: "candlestick",
-                    close: this.state.closeYValues,
-                    open: this.state.openYValues,
-                    high: this.state.highYValues,
-                    low: this.state.lowYValues,
-                    x: this.state.stockChartXValues,
-                    increasing: { line: { color: "green" } },
-                    decreasing: { line: { color: "red" } }
-                  }
-                ]}
-                layout={{
-                  width: 700,
-                  height: 440,
-                  title: {
-                    text: `${this.state.chartName}`,
-                    font: {
-                      family: "Poppins",
-                      size: 20,
-                      color: `#3e3e3e`
-                    }
-                  },
-                  xaxis: {
-                    autorange: true,
-                    range: [
-                      this.state.stockChartXValues[0],
-                      this.state.stockChartXValues[this.state.stockChartXValues.length - 1]
-                    ],
-                    rangeselector: {
-                      buttons: [
-                        {
-                          count: 1,
-                          label: "1d",
-                          step: "day",
-                          stepmode: "backward"
+            <div className="col-md-12 col-lg-8 dashboard-bg">
+              <div className="row">
+                <div className="col-md-12 col-lg-6">
+                  <h4>Analyse Stock Data</h4>
+                </div>
+                <div className="col-md-12 col-lg-6">
+                  <SearchBar
+                    value={Value}
+                    onChange={this.handleChange}
+                    onClick={this.handleClick}
+                  />
+                </div>
+              </div>
+              <section className="dashboard-section">
+                <div className="container">
+                  <h5>Symbol: {this.state.Symbol}</h5>
+                  <p>Last refreshed: {this.state.lastRefreshed}</p>
+                  <Plot
+                    data={[
+                      {
+                        type: "candlestick",
+                        close: this.state.closeYValues,
+                        open: this.state.openYValues,
+                        high: this.state.highYValues,
+                        low: this.state.lowYValues,
+                        x: this.state.stockChartXValues,
+                        increasing: { line: { color: "green" } },
+                        decreasing: { line: { color: "red" } }
+                      }
+                    ]}
+                    layout={{
+                      width: 700,
+                      height: 440,
+                      title: {
+                        text: `${this.state.chartName}`,
+                        font: {
+                          family: "Poppins",
+                          size: 20,
+                          color: `#3e3e3e`
+                        }
+                      },
+                      xaxis: {
+                        autorange: true,
+                        range: [
+                          this.state.stockChartXValues[0],
+                          this.state.stockChartXValues[this.state.stockChartXValues.length - 1]
+                        ],
+                        rangeselector: {
+                          buttons: [
+                            {
+                              count: 1,
+                              label: "1d",
+                              step: "day",
+                              stepmode: "backward"
+                            },
+                            {
+                              count: 5,
+                              label: "5d",
+                              step: "day",
+                              stepmode: "backward"
+                            },
+                            {
+                              count: 1,
+                              label: "1m",
+                              step: "month",
+                              stepmode: "backward"
+                            },
+                            {
+                              count: 6,
+                              label: "6m",
+                              step: "month",
+                              stepmode: "backward"
+                            },
+                            {
+                              count: 1,
+                              label: "1y",
+                              step: "year",
+                              stepmode: "backward"
+                            },
+                            {
+                              count: 5,
+                              label: "5y",
+                              step: "year",
+                              stepmode: "backward"
+                            },
+                            { label: "Max", step: "all" }
+                          ]
                         },
-                        {
-                          count: 5,
-                          label: "5d",
-                          step: "day",
-                          stepmode: "backward"
+                        rangeslider: {
+                          range: [
+                            this.state.stockChartXValues[0],
+                            this.state.stockChartXValues[this.state.stockChartXValues.length - 1]
+                          ]
                         },
-                        {
-                          count: 1,
-                          label: "1m",
-                          step: "month",
-                          stepmode: "backward"
-                        },
-                        {
-                          count: 6,
-                          label: "6m",
-                          step: "month",
-                          stepmode: "backward"
-                        },
-                        {
-                          count: 1,
-                          label: "1y",
-                          step: "year",
-                          stepmode: "backward"
-                        },
-                        {
-                          count: 5,
-                          label: "5y",
-                          step: "year",
-                          stepmode: "backward"
-                        },
-                        { label: "Max", step: "all" }
-                      ]
-                    },
-                    rangeslider: {
-                      range: [
-                        this.state.stockChartXValues[0],
-                        this.state.stockChartXValues[this.state.stockChartXValues.length - 1]
-                      ]
-                    },
-                    type: "date"
-                  }
-                }}
-                config={{
-                  responsive: true
-                }}
-              />
-              <br />
+                        type: "date"
+                      }
+                    }}
+                    config={{
+                      responsive: true
+                    }}
+                  />
+                </div>
+              </section>
             </div>
           </div>
         </div>
