@@ -106,16 +106,17 @@ class Account extends Component {
 
     return (
       <>
-        <section className="dashboard-section bg-no-repeat bg-cover bg-fixed" style={bgStyle}>
+        <section className="dashboard-section bg-no-repeat bg-cover bg-fixed tint-bg-2" style={bgStyle}>
           <div className="container">
             <div className="row">
-              <div className="col-md-12 col-lg-8 gray-bg-1">
+              <div className="col-md-12 col-lg-10 dashboard-bg">
                 <h1>Welcome back!</h1>
               </div>
-              <div className="col-md-12 col-lg-4 gray-bg-1">
+              <div className="col-md-12 col-lg-2 dashboard-bg">
                 <Link to="/">
                   <button
-                    className="m-btn m-btn-theme"
+                    className="m-btn-db m-btn-theme"
+                    id="logout-btn"
                     style={{ logoutStyle }}
                     onClick={this.useraction.logout}
                   >
