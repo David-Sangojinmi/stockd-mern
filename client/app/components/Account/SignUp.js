@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import "whatwg-fetch";
 import SignUpForm from "./SignUpForm";
 import Loading from "./Loading";
-import db2 from "../../../public/assets/img/db2.jpg";
+import db1 from "../../../public/assets/img/db1.jpg";
 var bgStyle = {
-  background: `url(${db2})`
+  backgroundImage: `url(${db1})`
 };
 
 import { getFromStorage, setInStorage } from "../../utils/storage";
@@ -20,7 +20,7 @@ class SignUp extends Component {
       signUpFirstName: "",
       signUpLastName: "",
       signUpEmail: "",
-      signUpPassword: "",
+      signUpPassword: ""
     };
 
     this.textchange = {
@@ -96,6 +96,7 @@ class SignUp extends Component {
             signUpEmail: "",
             signUpPassword: ""
           });
+          this.props.history.push("/account/signin");
         } else {
           this.setState({
             signUpError: json.message,
@@ -130,38 +131,31 @@ class SignUp extends Component {
   }
 
   render() {
-    const {
-      isLoading,
-      token,
-    } = this.state;
+    const { isLoading, token } = this.state;
 
     if (isLoading) {
       return (
         <>
-          <Loading/>
+          <Loading />
         </>
       );
     }
 
-    if (!token) {
-      return (
-        <>
-          <div className="dashboard-section bg-no-repeat bg-cover bg-fixed" style={bgStyle}>
+    return (
+      <section
+        className="sign-banner bg-no-repeat bg-cover bg-fixed home-bg tint-bg-1"
+        style={bgStyle}
+      >
+        <div className="container">
+          <div className="row full-screen">
             <SignUpForm
               state={this.state}
               textChange={this.textchange}
               userAction={this.useraction}
             />
           </div>
-        </>
-      );
-    }
-
-    return (
-      <div>
-        <p>Account</p>
-        <button onClick={this.useraction.logout}>Logout</button>
-      </div>
+        </div>
+      </section>
     );
   }
 }
