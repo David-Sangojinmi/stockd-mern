@@ -19,8 +19,8 @@ const Navbar = () => (
           Feedback
         </Link>
 
-        <NavLink className="navlink" to="/account/signin">
-          Sign In
+        <NavLink className="navlink" to="/account/home">
+          Account
         </NavLink>
       </div>
     </nav>
