@@ -20,14 +20,32 @@ img {
   max-width: 100%;
 }
 
+.centered {
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 .section {
   padding: 90px 0;
   position: relative;
 }
 
 .dashboard-section {
-  padding: 50px 0;
+  padding: 30px 0;
   position: relative;
+}
+
+.loadingDiv {
+  height: 100vh;
+  h1 {
+    font-size: 50px;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-align: center;
+  }
 }
 
 @media (max-width: 991px) {
@@ -35,8 +53,8 @@ img {
     padding: 60px 0;
   }
   .dashboard-section {
-  padding: 30px 0;
-}
+    padding: 20px 0;
+  }
 }
 
 @media (max-width: 767px) {
@@ -44,8 +62,8 @@ img {
     padding: 40px 0;
   }
   .dashboard-section {
-  padding: 20px 0;
-}
+    padding: 15px 0;
+  }
 }
 
 .gray-bg-1 {
@@ -54,6 +72,18 @@ img {
 
 .gray-bg-2 {
   background: #fff6f6;
+}
+
+.tint-bg-1 {
+  box-shadow: 0 3000px rgba(20, 20, 20, 0.3) inset;
+}
+
+.tint-bg-2 {
+  box-shadow: 0 3000px rgba(20, 20, 20, 0.7) inset;
+}
+
+.dashboard-bg {
+  background-color: rgba(242, 242, 242, 0.9);
 }
 
 /*---------------------------------
@@ -289,6 +319,48 @@ header {
 }
 
 /*-----------------------------------------
+*  Sign In / Sign Up
+-----------------------------------------*/
+.sign-banner {
+  align-items: center;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.sign-banner h1 {
+  color: #ffffff;
+  // font-style: normal;
+  font-weight: 800;
+  font-size: 50px;
+  line-height: 60px;
+  align-items: center;
+  text-align: center;
+}
+
+.sign-banner p {
+  color: #ffffff;
+  padding: 0 5%;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+@media (max-width: 991px) {
+  .sign-banner h1 {
+    font-size: 40px;
+    line-height: 30px;
+  }
+
+  .sign-banner p {
+    font-size: 14px;
+    line-height: 19px;
+    padding: 0 3%;
+  }
+}
+
+/*-----------------------------------------
 *  Feature
 -----------------------------------------*/
 .feature-box {
@@ -367,22 +439,47 @@ header {
 /*-----------------------------------------
 *  Buttons
 -----------------------------------------*/
-.m-btn {
-  height: 45px;
-  line-height: 45px;
+.m-btn,
+.m-btn-db,
+.m-btn-sign {
   padding: 0 30px;
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 2.5px;
   font-weight: 500;
   border: none;
-  border-radius: 3px;
   transition: all 0.3s ease 0s;
   cursor: pointer;
   outline: none;
   display: inline-block;
   text-decoration: none !important;
 }
+
+.m-btn {
+  height: 45px;
+  line-height: 45px;
+  border-radius: 3px;
+}
+
+.m-btn-sign {
+  height: 45px;
+  width: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin-bottom: 28px;
+}
+
+.m-btn-db {
+  height: 30px;
+  line-height: 30px;
+}
+
+#logout-btn {
+  margin: 1.5em 0;
+}
+
 .m-btn-white {
   color: #151515;
   background-color: #fff;
@@ -532,7 +629,6 @@ header {
 .form-group {
   position: relative;
   width: 100%;
-  margin-bottom: 20px;
 }
 .form-group .form-control {
   border: none;
@@ -541,6 +637,7 @@ header {
   height: 40px;
   padding-left: 0;
   padding-right: 0;
+  margin-bottom: 20px;
   border-bottom: 1px solid #ddd;
   border-radius: 0;
   width: 100%;
@@ -549,7 +646,26 @@ header {
   background: none;
 }
 
+.form-group .sign-group {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  height: 40px;
+  padding-left: 0;
+  padding-right: 0;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #ddd;
+  border-radius: 0;
+  width: 100%;
+  font-size: 14px;
+  color: #fff;
+  background: rgba(29, 29, 29, 0.7);
+}
+
 .form-group textarea.form-control {
+  height: 100px;
+}
+.form-group textarea.sign-form-control {
   height: 100px;
 }
 
@@ -577,9 +693,24 @@ header {
   background: #26a69a;
 }
 
+.form-group .sign-input-focus-effect {
+  width: 0 !important;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  -webkit-transition: ease all 0.3s;
+  -o-transition: ease all 0.3s;
+  transition: ease all 0.3s;
+  height: 2px;
+  background: #F14141;
+}
+
 .form-group textarea:focus:not([readonly]) + span.input-focus-effect,
 .form-group input:focus:not([readonly]) + span.input-focus-effect,
-.form-group select:focus:not([readonly]) + span.input-focus-effect {
+.form-group select:focus:not([readonly]) + span.input-focus-effect,
+.form-group textarea:focus:not([readonly]) + span.sign-input-focus-effect,
+.form-group input:focus:not([readonly]) + span.sign-input-focus-effect,
+.form-group select:focus:not([readonly]) + span.sign-input-focus-effect {
   width: 100% !important;
 }
 
@@ -771,10 +902,4 @@ header {
 }
 .h7 span {
   color: #e8e8e8;
-}
-
-.loadingDiv {
-  border: 5px outset red;
-  background-color: lightblue;
-  text-align: center;
 }
