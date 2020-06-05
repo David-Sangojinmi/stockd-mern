@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import "whatwg-fetch";
 import Loading from "./Loading";
-import SignInForm from "./SignInForm";
+import { Link } from "react-router-dom";
 import Account from "./Account";
 import db1 from "../../../public/assets/img/db1.jpg";
 var bgStyle = {
-  background: `url(${db1})`
+  backgroundImage: `url(${db1})`
 };
 
 import { getFromStorage, setInStorage } from "../../utils/storage";
@@ -16,19 +16,15 @@ class AccountHome extends Component {
 
     this.state = {
       isLoading: true,
-      token: "",
-      signInError: "",
-      signInEmail: "",
-      signInPassword: ""
+      token: ""
     };
 
-    this.textchange = {
-      onTextboxChangeSignInEmail: this.onTextboxChangeSignInEmail.bind(this),
-      onTextboxChangeSignInPassword: this.onTextboxChangeSignInPassword.bind(this)
-    };
+    // this.textchange = {
+    //   onTextboxChangeSignInEmail: this.onTextboxChangeSignInEmail.bind(this),
+    //   onTextboxChangeSignInPassword: this.onTextboxChangeSignInPassword.bind(this)
+    // };
 
     this.useraction = {
-      onSignIn: this.onSignIn.bind(this),
       logout: this.logout.bind(this)
     };
   }
@@ -61,49 +57,9 @@ class AccountHome extends Component {
     }
   }
 
-  onSignIn() {
-    // Grab state
-    const { signInEmail, signInPassword } = this.state;
-
-    this.setState({
-      isLoading: true
-    });
-
-    // Post request to backend
-    fetch("/api/account/signin", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        email: signInEmail,
-        password: signInPassword
-      })
-    })
-      .then(res => res.json())
-      .then(json => {
-        if (json.success) {
-          setInStorage("the_main_app", {token: json.token });
-          this.setState({
-            signInError: json.message,
-            token: json.token,
-            isLoading: false,
-            // Redirect them to dashboard page rather than \/
-            signInEmail: "",
-            signInPassword: ""
-          });
-        } else {
-          this.setState({
-            signInError: json.message,
-            isLoading: false
-          });
-        }
-      });
-  }
-  
   logout() {
     this.setState({
-      isLoading: true,
+      isLoading: true
     });
 
     const obj = getFromStorage("the_main_app");
@@ -117,7 +73,7 @@ class AccountHome extends Component {
         .then(json => {
           if (json.success) {
             this.setState({
-              token: '',
+              token: "",
               isLoading: false
             });
           } else {
@@ -133,52 +89,47 @@ class AccountHome extends Component {
     }
   }
 
-  onTextboxChangeSignInEmail(event) {
-    this.setState({
-      signInEmail: event.target.value
-    });
-  }
-
-  onTextboxChangeSignInPassword(event) {
-    this.setState({
-      signInPassword: event.target.value
-    });
-  }
-
   render() {
-    const {
-      isLoading,
-      token,
-    } = this.state;
+    const { isLoading, token } = this.state;
 
     if (isLoading) {
       return (
         <>
-          <Loading/>
+          <Loading />
         </>
       );
     }
 
     if (!token) {
       return (
-        <>
-          <div className="dashboard-section bg-no-repeat bg-cover bg-fixed" style={bgStyle}>
-            <SignInForm
-              state={this.state}
-              textChange={this.textchange}
-              userAction={this.useraction}
-            />
+        <section
+          className="home-banner-01 bg-no-repeat bg-cover bg-fixed tint-bg-1"
+          style={bgStyle}
+        >
+          <div className="container">
+            <div className="row full-screen align-items-center">
+              <div className="centered">
+                <h2 style={{color:'#FFFFFF'}}>You're not signed in :(</h2>
+                <p>
+                  {" "}
+                  Click{" "}
+                  <span id="coloured">
+                    <Link to="/account/signin">here</Link>
+                  </span>{" "}
+                  to sign in or{" "}
+                  <span id="coloured">
+                    <Link to="/account/signup">here</Link>
+                  </span>{" "}
+                  to sign up!
+                </p>
+              </div>
+            </div>
           </div>
-        </>
+        </section>
       );
     }
 
-    return (
-      <Account />
-      // <>
-      //   <Link to="account/stockinfo"><button className="m-btn m-btn-theme">Check out stocks</button></Link>
-      // </>
-    );
+    return <Account />;
   }
 }
 
