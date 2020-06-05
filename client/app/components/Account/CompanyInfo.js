@@ -40,7 +40,7 @@ class CompanyInfo extends Component {
   handleClick(event) {
     if (event) event.preventDefault();
     this.setState({
-      Value: "",
+      Value: ""
       // TickerSymbol: this.state.Value
     });
 
@@ -84,6 +84,9 @@ class CompanyInfo extends Component {
         SummaryFunction.push(response.data["assetProfile"]["longBusinessSummary"]);
         StockPriceFunction.push(response.data["price"]["regularMarketPrice"]["raw"]);
         HeadquartersFunction.push(response.data["assetProfile"]["address1"]);
+        HeadquartersFunction.push(response.data["assetProfile"]["address2"]);
+        HeadquartersFunction.push(response.data["assetProfile"]["city"]);
+        HeadquartersFunction.push(response.data["assetProfile"]["zip"]);
 
         NumberOfEmployeesFunction.push(response.data["assetProfile"]["fullTimeEmployees"]);
         WebsiteFunction.push(response.data["assetProfile"]["website"]);
@@ -123,7 +126,7 @@ class CompanyInfo extends Component {
       <>
         <div className="container">
           <div className="row">
-            <div className="col-md-12 col-lg-4 gray-bg-1">
+            <div className="col-md-12 col-lg-4 dashboard-bg">
               <h3>Companies</h3>
               <p>AAPL</p>
               <p>AMZN</p>
@@ -133,10 +136,20 @@ class CompanyInfo extends Component {
                 <strong>Current:</strong> <span id="coloured">{this.state.Symbol}</span>
               </p> */}
             </div>
-            <div className="col-md-12 col-lg-8 gray-bg-1">
-              <h4>Find Company Information</h4>
-              <SearchBar value={Value} onChange={this.handleChange} onClick={this.handleClick} />
-              <section className="section">
+            <div className="col-md-12 col-lg-8 dashboard-bg">
+              <div className="row">
+                <div className="col-md-12 col-lg-6">
+                  <h4>Find Company Information</h4>
+                </div>
+                <div className="col-md-12 col-lg-6">
+                  <SearchBar
+                    value={Value}
+                    onChange={this.handleChange}
+                    onClick={this.handleClick}
+                  />
+                </div>
+              </div>
+              <section className="dashboard-section">
                 <div className="container">
                   <h2>{this.state.Fullname}</h2>
                   {/* <p>
@@ -145,13 +158,19 @@ class CompanyInfo extends Component {
                   <div className="row">
                     <div className="col-md-12 col-lg-6">
                       <p>
-                        <strong>Address:</strong> {this.state.Headquarters}
+                        <strong>Address:</strong> {this.state.Headquarters[0]}
+                        {", "}
+                        {this.state.Headquarters[1]}
+                        {", "}
+                        {this.state.Headquarters[2]}
+                        {" "}
+                        {this.state.Headquarters[3]}
                       </p>
                       <p>
                         <strong>Country:</strong> {this.state.Country}
                       </p>
                       <strong>Website:</strong>{" "}
-                      <span>
+                      <span id="coloured">
                         <a href={this.state.Website}>{this.state.Website}</a>
                       </span>
                     </div>
