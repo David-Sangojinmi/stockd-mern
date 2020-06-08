@@ -28,7 +28,7 @@ const SignInForm = ({ state, textChange, userAction }) => {
         <span className="sign-input-focus-effect"></span>
       </div>
       <button className="m-btn-sign m-btn-theme" onClick={userAction.onSignIn}>
-        -> Continue
+        ->Continue
       </button>
       <p>
         Haven't created an account yet? Sign up{" "}
