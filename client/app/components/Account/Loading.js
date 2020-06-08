@@ -1,20 +1,21 @@
 import React from "react";
 
 const Loading = () => {
-
-    return (
-      <>
-        <section className="section gray-bg-1">
-          <div className="container">
-            <div className="row">
+  return (
+    <>
+      <section className="sign-banner tint-bg-1 gray-bg-1">
+        <div className="container">
+          <div className="row full-screen">
+            <div className="centered">
               <div className="loadingDiv">
                 <h1>Loading...</h1>
               </div>
             </div>
           </div>
-        </section>
-      </>
-    );
-}
+        </div>
+      </section>
+    </>
+  );
+};
 
-export default Loading
+export default Loading;
