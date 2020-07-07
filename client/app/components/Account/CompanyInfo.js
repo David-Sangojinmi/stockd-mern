@@ -233,9 +233,9 @@ class CompanyInfo extends Component {
           QkRtF.push(response[1].data["financialData"]["quickRatio"]["fmt"]);
           CrRtF.push(response[1].data["financialData"]["currentRatio"]["fmt"]);
           DtEqRtF.push(response[1].data["financialData"]["debtToEquity"]["fmt"]);
-          NtDtF.push(response[2].data["balanceSheetHistoryQuarterly"][["balanceSheetStatements"][0]]["longTermDebt"]); //fmt
+          NtDtF.push(response[2].data.balanceSheetHistoryQuarterly.balanceSheetStatements[0].longTermDebt.fmt);
           TlDtF.push(response[1].data["financialData"]["totalDebt"]["fmt"]);
-          TlAtsF.push(response[2].data["balanceSheetHistoryQuarterly"][["balanceSheetStatements"][0]]["totalAssets"]); // fmt
+          TlAtsF.push(response[2].data.balanceSheetHistoryQuarterly.balanceSheetStatements[0].totalAssets.fmt);
           RtOnAstF.push(response[1].data["financialData"]["returnOnAssets"]["fmt"]);
           RtOnEqF.push(response[1].data["financialData"]["returnOnEquity"]["fmt"]);
           RtOnICF.push(response[0].data["price"]["longName"]);
@@ -252,17 +252,13 @@ class CompanyInfo extends Component {
           OprMgnF.push(response[1].data["financialData"]["operatingMargins"]["fmt"]);
           PtxMgnF.push(response[1].data["financialData"]["profitMargins"]["fmt"]);
           BscE1F.push(response[0].data["price"]["longName"]);
-          // BscE2F.push(response[2].data["timeSeries"][["annualBasicEPS"][3]]["reportedValue"]["raw"]); //reportedValue is problem
-          // EDltF.push(response[2].data["timeSeries"][["annualDilutedEPS"][3]]["reportedValue"]["fmt"]);
-          // NtIcF.push(
-          //  response[2].data["timeSeries"][["trailingNetIncome"][0]]["reportedValue"]["fmt"]
-          // );
+          BscE2F.push(response[2].data.timeSeries.annualBasicEPS[3].reportedValue.raw);
+          EDltF.push(response[2].data.timeSeries.annualDilutedEPS[3].reportedValue.fmt);
+          NtIcF.push(response[2].data.timeSeries.trailingNetIncome[0].reportedValue.fmt);
           EBTAF.push(response[1].data["financialData"]["ebitda"]["fmt"]);
           GrPf1F.push(response[0].data["price"]["longName"]);
           GrPf2F.push(response[1].data["financialData"]["grossProfits"]["fmt"]);
-          // LsYrRvF.push(
-          //   response[2].data["timeSeries"]["annualTotalRevenue"]["3"]["reportedValue"]["fmt"]
-          // );
+          LsYrRvF.push(response[2].data.timeSeries.annualTotalRevenue[3].reportedValue.fmt);
           TlRvF.push(response[1].data["financialData"]["totalRevenue"]["fmt"]);
           FrChFlF.push(response[1].data["financialData"]["freeCashflow"]["fmt"]);
           // ---------------
