@@ -72,6 +72,7 @@ class CompanyInfo extends Component {
       GrPf1: [],
       GrPf2: [],
       LsYrRv: [],
+      TlRv: [],
       FrChFl: []
     };
 
@@ -153,6 +154,7 @@ class CompanyInfo extends Component {
     let GrPf1F = [];
     let GrPf2F = [];
     let LsYrRvF = [];
+    let TlRvF = [];
     let FrChFlF = [];
 
     axios
@@ -182,11 +184,24 @@ class CompanyInfo extends Component {
           params: {
             symbol: Symbol
           }
+        }),
+        axios({
+          method: "GET",
+          url: "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-financials",
+          headers: {
+            "content-type": "application/octet-stream",
+            "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
+            "x-rapidapi-key": RAPID_API_KEY,
+            useQueryString: true
+          },
+          params: {
+            symbol: Symbol
+          }
         })
       ])
       .then(
         axios.spread((...response) => {
-          console.log(response[0].data, response[1].data);
+          console.log(response[0].data, response[1].data, response[2].data);
 
           FullnameFunction.push(response[0].data["price"]["longName"]);
           CurrencyFunction.push(response[0].data["price"]["currencySymbol"]);
@@ -218,9 +233,17 @@ class CompanyInfo extends Component {
           QkRtF.push(response[1].data["financialData"]["quickRatio"]["fmt"]);
           CrRtF.push(response[1].data["financialData"]["currentRatio"]["fmt"]);
           DtEqRtF.push(response[1].data[""]);
-          NtDtF.push(response[1].data[""]);
+          NtDtF.push(
+            response[2].data["balanceSheetHistoryQuarterly"]["balanceSheetStatements"][0][
+              "longTermDebt"
+            ]
+          );
           TlDtF.push(response[1].data["financialData"]["totalDebt"]["fmt"]);
-          TlAtsF.push(response[1].data[""]);
+          TlAtsF.push(
+            response[2].data["balanceSheetHistoryQuarterly"]["balanceSheetStatements"][0][
+              "totalAssets"
+            ]["fmt"]
+          );
           RtOnAstF.push(response[1].data["financialData"]["returnOnAssets"]["fmt"]);
           RtOnEqF.push(response[1].data["financialData"]["returnOnEquity"]["fmt"]);
           RtOnICF.push(response[1].data[""]);
@@ -236,14 +259,21 @@ class CompanyInfo extends Component {
           GrsMgnF.push(response[1].data["financialData"]["grossMargins"]["fmt"]);
           OprMgnF.push(response[1].data["financialData"]["operatingMargins"]["fmt"]);
           PtxMgnF.push(response[1].data["financialData"]["profitMargins"]["fmt"]);
-          BscE1F.push(response[1].data[""]);
-          BscE2F.push(response[1].data[""]);
-          EDltF.push(response[1].data[""]);
-          NtIcF.push(response[1].data[""]);
-          EBTAF.push(response[1].data[""]);
+          BscE1F.push(response[2].data[""]);
+          BscE2F.push(response[2].data["timeSeries"]["annualBasicEPS"][3]["reportedValue"]["raw"]);
+          EDltF.push(response[2].data["timeSeries"]["annualDilutedEPS"][3]["reportedValue"]["fmt"]);
+          NtIcF.push(
+            response[2].data["timeSeries"]["trailingNetIncome"][0]["reportedValue"]["fmt"]
+          );
+          EBTAF.push(response[2].data["timeSeries"]["annualEbitda"][3]["reportedValue"]["fmt"]);
           GrPf1F.push(response[1].data[""]);
           GrPf2F.push(response[1].data["financialData"]["grossProfits"]["fmt"]);
-          LsYrRvF.push(response[1].data[""]);
+          LsYrRvF.push(
+            response[2].data["timeSeries"]["annualTotalRevenue"][3]["reportedValue"]["fmt"]
+          );
+          TlRvF.push(
+            response[2].data["timeSeries"]["trailingTotalRevenue"][0]["reportedValue"]["fmt"]
+          );
           FrChFlF.push(response[1].data["financialData"]["freeCashflow"]["fmt"]);
           // ---------------
 
@@ -260,7 +290,47 @@ class CompanyInfo extends Component {
             NumberOfEmployees: NumberOfEmployeesFunction,
             Website: WebsiteFunction,
 
-            MktCp: MktCpF
+            MktCp: MktCpF,
+            EntVl1: EntVl1F,
+            EntVl2: EntVl2F,
+            TtlShrOts: TtlShrOtsF,
+            NumEpl: NumEplF,
+            NmShlrds: NmShlrdsF,
+            PrcToErnRat1: PrcToErnRat1F,
+            PrcToErnRat2: PrcToErnRat2F,
+            PrcToBk: PrcToBkF,
+            PrcToSl: PrcToSlF,
+            QkRt: QkRtF,
+            CrRt: CrRtF,
+            DtEqRt: DtEqRtF,
+            NtDt: NtDtF,
+            TlDt: TlDtF,
+            TlAts: TlAtsF,
+            RtOnAst: RtOnAstF,
+            RtOnEq: RtOnEqF,
+            RtOnIC: RtOnICF,
+            RvPEm: RvPEmF,
+            AvgVl: AvgVlF,
+            OnYrBt: OnYrBtF,
+            FTWkHh: FTWkHhF,
+            FTWkLw: FTWkLwF,
+            DvdPd: DvdPdF,
+            DvdYd: DvdYdF,
+            DvdShr: DvdShrF,
+            NtMgn: NtMgnF,
+            GrsMgn: GrsMgnF,
+            OprMgn: OprMgnF,
+            PtxMgn: PtxMgnF,
+            BscE1: BscE1F,
+            BscE2: BscE2F,
+            EDlt: EDltF,
+            NtIc: NtIcF,
+            EBTA: EBTAF,
+            GrPf1: GrPf1F,
+            GrPf2L: GrPf2F,
+            LsYrRv: LsYrRvF,
+            TlRv: TlRvF,
+            FrChFl: FrChFlF
           });
         })
       )
@@ -362,8 +432,52 @@ class CompanyInfo extends Component {
                       <p>
                         Market Capitalisation <strong>{this.state.MktCp}</strong>
                       </p>
+                      <p>
+                        Enterprise Value (MRQ) <strong>{this.state.EntVl1}</strong>
+                      </p>
+                      <p>
+                        Enterprise Value/EBITDA (TTM) <strong>{this.state.EntVl2}</strong>
+                      </p>
+                      <p>
+                        Total Shares Outstanding (MRQ) <strong>{this.state.TtlShrOts}</strong>
+                      </p>
+                      <p>
+                        Number of Employees <strong>{this.state.NumEpl}</strong>
+                      </p>
+                      <p>
+                        Number of Shareholders <strong>{this.state.NmShlrds}</strong>
+                      </p>
+                      <p>
+                        Price to Earnings Ratio (TTM) <strong>{this.state.PrcToErnRat1}</strong>
+                      </p>
+                      <p>
+                        Price to Revenue Ratio (TTM) <strong>{this.state.PrcToErnRat2}</strong>
+                      </p>
+                      <p>
+                        Price to Book (FY) <strong>{this.state.PrcToBk}</strong>
+                      </p>
+                      <p>
+                        Price to Sales (FY) <strong>{this.state.PrcToSl}</strong>
+                      </p>
                       <h5>Balance Sheet</h5>
-                      <p></p>
+                      <p>
+                        Quick Ratio (MRQ) <strong>{this.state.QkRt}</strong>
+                      </p>
+                      <p>
+                        Current Ratio (MRQ) <strong>{this.state.CrRt}</strong>
+                      </p>
+                      <p>
+                        Debt to Equity Ratio (MRQ) <strong>{this.state.DtEqRt}</strong>
+                      </p>
+                      <p>
+                        Net Debt (MRQ) <strong>{this.state.NtDt}</strong>
+                      </p>
+                      <p>
+                        Total Debt (MRQ) <strong>{this.state.TlDt}</strong>
+                      </p>
+                      <p>
+                        Total Assets (MRQ) <strong>{this.state.TlAts}</strong>
+                      </p>
                       <h5>Operating Metrics</h5>
                       <p></p>
                     </div>
