@@ -13,6 +13,7 @@ class CompanyInfo extends Component {
 
       Fullname: [],
       Currency: [],
+      CurrencySymbol: [],
       Country: [],
       Sector: [],
       Industry: [],
@@ -99,6 +100,7 @@ class CompanyInfo extends Component {
     let SymbolFunction = [];
     let FullnameFunction = [];
     let CurrencyFunction = [];
+    let CurrencySymbolFunction = [];
     let CountryFunction = [];
     let SectorFunction = [];
     let IndustryFunction = [];
@@ -204,7 +206,8 @@ class CompanyInfo extends Component {
           console.log(response[0].data, response[1].data, response[2].data);
 
           FullnameFunction.push(response[0].data["price"]["longName"]);
-          CurrencyFunction.push(response[0].data["price"]["currencySymbol"]);
+          CurrencyFunction.push(response[0].data["price"]["currency"]);
+          CurrencySymbolFunction.push(response[0].data["price"]["currencySymbol"]);
           CountryFunction.push(response[0].data["assetProfile"]["country"]);
           SectorFunction.push(response[0].data["assetProfile"]["sector"]);
           IndustryFunction.push(response[0].data["assetProfile"]["industry"]);
@@ -225,9 +228,9 @@ class CompanyInfo extends Component {
           EntVl2F.push(response[1].data["defaultKeyStatistics"]["enterpriseToEbitda"]["fmt"]);
           TtlShrOtsF.push(response[1].data["defaultKeyStatistics"]["sharesOutstanding"]["fmt"]);
           NumEplF.push(response[0].data["assetProfile"]["fullTimeEmployees"]);
-          NmShlrdsF.push(response[0].data["price"]["longName"]);
-          PytRatF.push(response[0].data["summaryDetail"]["payoutRatio"]["fmt"]);
-          PrcToErnRat2F.push(response[0].data["price"]["longName"]);
+          // NmShlrdsF.push(response[0].data["price"]["longName"]);
+          // Not all equities have this metric -> PytRatF.push(response[0].data["summaryDetail"]["payoutRatio"]["fmt"]);
+          // PrcToErnRat2F.push(response[0].data["price"]["longName"]);
           PrcToBkF.push(response[1].data["defaultKeyStatistics"]["priceToBook"]["fmt"]);
           PrcToSlF.push(response[0].data["summaryDetail"]["priceToSalesTrailing12Months"]["fmt"]);
           QkRtF.push(response[1].data["financialData"]["quickRatio"]["fmt"]);
@@ -238,27 +241,27 @@ class CompanyInfo extends Component {
           TlAtsF.push(response[2].data.balanceSheetHistoryQuarterly.balanceSheetStatements[0].totalAssets.fmt);
           RtOnAstF.push(response[1].data["financialData"]["returnOnAssets"]["fmt"]);
           RtOnEqF.push(response[1].data["financialData"]["returnOnEquity"]["fmt"]);
-          RtOnICF.push(response[0].data["price"]["longName"]);
-          RvPEmF.push(response[0].data["price"]["longName"]);
+          // RtOnICF.push(response[0].data["price"]["longName"]);
+          // RvPEmF.push(response[0].data["price"]["longName"]);
           AvgVlF.push(response[0].data["price"]["averageDailyVolume10Day"]["fmt"]);
           OnYrBtF.push(response[0].data["summaryDetail"]["beta"]["fmt"]);
           FTWkHhF.push(response[0].data["summaryDetail"]["fiftyTwoWeekHigh"]["fmt"]);
           FTWkLwF.push(response[0].data["summaryDetail"]["fiftyTwoWeekLow"]["fmt"]);
-          DvdPdF.push(response[0].data["price"]["longName"]);
-          DvdYdF.push(response[1].data["summaryDetail"]["dividendYield"]["fmt"]);
-          DvdShrF.push(response[1].data["summaryDetail"]["dividendRate"]["fmt"]);
-          NtMgnF.push(response[0].data["price"]["longName"]);
+          // DvdPdF.push(response[0].data["price"]["longName"]);
+          // Not all equities have this metric -> DvdYdF.push(response[1].data["summaryDetail"]["dividendYield"]["fmt"]);
+          // Not all equities have this metric -> DvdShrF.push(response[1].data["summaryDetail"]["dividendRate"]["fmt"]);
+          // NtMgnF.push(response[0].data["price"]["longName"]);
           GrsMgnF.push(response[1].data["financialData"]["grossMargins"]["fmt"]);
           OprMgnF.push(response[1].data["financialData"]["operatingMargins"]["fmt"]);
           PtxMgnF.push(response[1].data["financialData"]["profitMargins"]["fmt"]);
-          BscE1F.push(response[0].data["price"]["longName"]);
-          BscE2F.push(response[2].data.timeSeries.annualBasicEPS[3].reportedValue.raw);
-          EDltF.push(response[2].data.timeSeries.annualDilutedEPS[3].reportedValue.fmt);
+          // BscE1F.push(response[0].data["price"]["longName"]);
+          BscE2F.push(response[2].data.timeSeries.annualBasicEPS[2].reportedValue.raw);
+          EDltF.push(response[2].data.timeSeries.annualDilutedEPS[2].reportedValue.fmt);
           NtIcF.push(response[2].data.timeSeries.trailingNetIncome[0].reportedValue.fmt);
           EBTAF.push(response[1].data["financialData"]["ebitda"]["fmt"]);
-          GrPf1F.push(response[0].data["price"]["longName"]);
+          // GrPf1F.push(response[0].data["price"]["longName"]);
           GrPf2F.push(response[1].data["financialData"]["grossProfits"]["fmt"]);
-          LsYrRvF.push(response[2].data.timeSeries.annualTotalRevenue[3].reportedValue.fmt);
+          LsYrRvF.push(response[2].data.timeSeries.annualTotalRevenue[2].reportedValue.fmt);
           TlRvF.push(response[1].data["financialData"]["totalRevenue"]["fmt"]);
           FrChFlF.push(response[1].data["financialData"]["freeCashflow"]["fmt"]);
           // ---------------
@@ -266,6 +269,7 @@ class CompanyInfo extends Component {
           this.setState({
             Fullname: FullnameFunction,
             Currency: CurrencyFunction,
+            CurrencySymbol: CurrencySymbolFunction,
             Country: CountryFunction,
             Sector: SectorFunction,
             Industry: IndustryFunction,
@@ -289,9 +293,9 @@ class CompanyInfo extends Component {
             QkRt: QkRtF,
             CrRt: CrRtF,
             DtEqRt: DtEqRtF,
-            NtDt: NtDtF, //
+            NtDt: NtDtF,
             TlDt: TlDtF,
-            TlAts: TlAtsF, //
+            TlAts: TlAtsF,
             RtOnAst: RtOnAstF,
             RtOnEq: RtOnEqF,
             RtOnIC: RtOnICF,
@@ -354,7 +358,7 @@ class CompanyInfo extends Component {
             <div className="col-md-12 col-lg-8 dashboard-bg">
               <div className="row">
                 <div className="col-md-12 col-lg-6">
-                  <h4>Find Company Information</h4>
+                  <h2>Find Company Information</h2>
                 </div>
                 <div className="col-md-12 col-lg-6">
                   <SearchBar value={Value} onChange={this.handleChange} onClick={this.handleClick} />
@@ -362,12 +366,13 @@ class CompanyInfo extends Component {
               </div>
               <section className="dashboard-section">
                 <div className="container">
-                  <h2>{this.state.Fullname}</h2>
-                  {/* <p>
-                    Stock Price: {this.state.Currency} {this.state.StockPrice}
-                  </p> */}
+                  <h3>{this.state.Fullname}</h3>
                   <div className="row">
                     <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                      <p>
+                        <strong>Price: </strong>
+                        {this.state.StockPrice} {this.state.Currency}
+                      </p>
                       <p>
                         <strong>Address:</strong> {this.state.Headquarters[0]}
                         {", "}
@@ -408,24 +413,107 @@ class CompanyInfo extends Component {
                   <div className="row">
                     <div className="col-md-12">
                       <h3>Key Data</h3>
+                      <p>Any missing values were not made availble from the source.</p>
                     </div>
                     <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                       <h5>Valuation</h5>
-                      <p>Market Capitalisation <strong>{this.state.MktCp}</strong><br />Enterprise Value (MRQ) <strong>{this.state.EntVl1}</strong><br />Enterprise Value/EBITDA (TTM) <strong>{this.state.EntVl2}</strong><br />Total Shares Outstanding (MRQ) <strong>{this.state.TtlShrOts}</strong><br />Number of Employees <strong>{this.state.NumEpl}</strong><br />Number of Shareholders <strong>{this.state.NmShlrds}</strong><br />Payout Ratio (TTM) <strong>{this.state.PytRat}</strong><br />Price to Revenue Ratio (TTM) <strong>{this.state.PrcToErnRat2}</strong><br />Price to Book (FY) <strong>{this.state.PrcToBk}</strong><br />Price to Sales (FY) <strong>{this.state.PrcToSl}</strong></p>
+                      <p>
+                        Market Capitalisation <strong>{this.state.MktCp}</strong>
+                        <br />
+                        Enterprise Value (MRQ) <strong>{this.state.EntVl1}</strong>
+                        <br />
+                        Enterprise Value/EBITDA (TTM) <strong>{this.state.EntVl2}</strong>
+                        <br />
+                        Total Shares Outstanding (MRQ) <strong>{this.state.TtlShrOts}</strong>
+                        <br />
+                        Number of Employees <strong>{this.state.NumEpl}</strong>
+                        <br />
+                        {/* Number of Shareholders <strong>{this.state.NmShlrds}</strong>
+                        <br /> */}
+                        Payout Ratio (TTM) <strong>{this.state.PytRat}</strong>
+                        <br />
+                        {/* Price to Revenue Ratio (TTM) <strong>{this.state.PrcToErnRat2}</strong>
+                        <br /> */}
+                        Price to Book (FY) <strong>{this.state.PrcToBk}</strong>
+                        <br />
+                        Price to Sales (FY) <strong>{this.state.PrcToSl}</strong>
+                      </p>
                       <h5>Balance Sheet</h5>
-                      <p>Quick Ratio (MRQ) <strong>{this.state.QkRt}</strong><br />Current Ratio (MRQ) <strong>{this.state.CrRt}</strong><br />Debt to Equity Ratio (MRQ) <strong>{this.state.DtEqRt}</strong><br />Net Debt (MRQ) <strong>{this.state.NtDt}</strong><br />Total Debt (MRQ) <strong>{this.state.TlDt}</strong><br />Total Assets (MRQ) <strong>{this.state.TlAts}</strong></p>
+                      <p>
+                        Quick Ratio (MRQ) <strong>{this.state.QkRt}</strong>
+                        <br />
+                        Current Ratio (MRQ) <strong>{this.state.CrRt}</strong>
+                        <br />
+                        Debt to Equity Ratio (MRQ) <strong>{this.state.DtEqRt}</strong>
+                        <br />
+                        Net Debt (MRQ) <strong>{this.state.NtDt}</strong>
+                        <br />
+                        Total Debt (MRQ) <strong>{this.state.TlDt}</strong>
+                        <br />
+                        Total Assets (MRQ) <strong>{this.state.TlAts}</strong>
+                      </p>
                       <h5>Operating Metrics</h5>
-                      <p>Return on Assets (TTM) <strong>{this.state.RtOnAst}</strong><br />Return on Equity (TTM) <strong>{this.state.RtOnEq}</strong><br />Return on Invested Capital (TTM) <strong>{this.state.RtOnIC}</strong><br />Revenue per Employee (TTM) <strong>{this.state.RvPEm}</strong></p>
+                      <p>
+                        Return on Assets (TTM) <strong>{this.state.RtOnAst}</strong>
+                        <br />
+                        Return on Equity (TTM) <strong>{this.state.RtOnEq}</strong>
+                        <br />
+                        {/* Return on Invested Capital (TTM) <strong>{this.state.RtOnIC}</strong>
+                        <br /> */}
+                        {/* Revenue per Employee (TTM) <strong>{this.state.RvPEm}</strong> */}
+                      </p>
                     </div>
                     <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                       <h5>Price History</h5>
-                      <p>Average Volume (10 day) <strong>{this.state.AvgVl}</strong><br />1-Year Beta <strong>{this.state.OnYrBt}</strong><br />52 Week High <strong>{this.state.FTWkHh}</strong><br />52 Week Low <strong>{this.state.FTWkLw}</strong></p>
+                      <p>
+                        Average Volume (10 day) <strong>{this.state.AvgVl}</strong>
+                        <br />
+                        1-Year Beta <strong>{this.state.OnYrBt}</strong>
+                        <br />
+                        52 Week High <strong>{this.state.FTWkHh}</strong>
+                        <br />
+                        52 Week Low <strong>{this.state.FTWkLw}</strong>
+                      </p>
                       <h5>Dividends</h5>
-                      <p>Dividends Paid (FY) <strong>{this.state.DvdPd}</strong><br />Dividends Yield (FY) <strong>{this.state.DvdYd}</strong><br />Dividends per Share (FY) <strong>{this.state.DvdShr}</strong></p>
+                      <p>
+                        {/* Dividends Paid (FY) <strong>{this.state.DvdPd}</strong>
+                        <br /> */}
+                        Dividends Yield (FY) <strong>{this.state.DvdYd}</strong>
+                        <br />
+                        Dividends per Share (FY) <strong>{this.state.DvdShr}</strong>
+                      </p>
                       <h5>Margins</h5>
-                      <p>Net Margin (TTM) <strong>{this.state.NtMgn}</strong><br />Gross Margin (TTM) <strong>{this.state.GrsMgn}</strong><br />Operating Margin (TTM) <strong>{this.state.OprMgn}</strong><br />Pretax Margin (TTM) <strong>{this.state.PtxMgn}</strong></p>
+                      <p>
+                        {/* Net Margin (TTM) <strong>{this.state.NtMgn}</strong>
+                        <br /> */}
+                        Gross Margin (TTM) <strong>{this.state.GrsMgn}</strong>
+                        <br />
+                        Operating Margin (TTM) <strong>{this.state.OprMgn}</strong>
+                        <br />
+                        Pretax Margin (TTM) <strong>{this.state.PtxMgn}</strong>
+                      </p>
                       <h5>Income Statement</h5>
-                      <p>Basic EPS (FY) <strong>{this.state.BscE1}</strong><br />Basic EPS (TTM) <strong>{this.state.BscE2}</strong><br />EPS Diluted (FY) <strong>{this.state.EDlt}</strong><br />Net Income (FY) <strong>{this.state.NtIc}</strong><br />EBITDA (TTM) <strong>{this.state.EBTA}</strong><br />Gross Profit (MRQ) <strong>{this.state.GrPf1}</strong><br />Gross Profit (FY) <strong>{this.state.GrPf2}</strong><br />Last Year Revenue (FY) <strong>{this.state.LsYrRv}</strong><br />Total Revenue (FY) <strong>{this.state.TlRv}</strong><br />Free Cash Flow (TTM) <strong>{this.state.FrChFl}</strong></p>
+                      <p>
+                        {/* Basic EPS (FY) <strong>{this.state.BscE1}</strong>
+                        <br /> */}
+                        Basic EPS (TTM) <strong>{this.state.BscE2}</strong>
+                        <br />
+                        Diluted EPS (FY) <strong>{this.state.EDlt}</strong>
+                        <br />
+                        Net Income (FY) <strong>{this.state.NtIc}</strong>
+                        <br />
+                        EBITDA (TTM) <strong>{this.state.EBTA}</strong>
+                        <br />
+                        {/* Gross Profit (MRQ) <strong>{this.state.GrPf1}</strong>
+                        <br />
+                        Gross Profit (FY) <strong>{this.state.GrPf2}</strong>
+                        <br /> */}
+                        Last Year Revenue (FY) <strong>{this.state.LsYrRv}</strong>
+                        <br />
+                        Total Revenue (FY) <strong>{this.state.TlRv}</strong>
+                        <br />
+                        Free Cash Flow (TTM) <strong>{this.state.FrChFl}</strong>
+                      </p>
                     </div>
                   </div>
                 </div>
