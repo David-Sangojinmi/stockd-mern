@@ -413,7 +413,7 @@ class CompanyInfo extends Component {
                   <div className="row">
                     <div className="col-md-12">
                       <h3>Key Data</h3>
-                      <p>Any missing values were not made availble from the source.</p>
+                      <p>Any missing values were not made available from the source.</p>
                     </div>
                     <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                       <h5>Valuation</h5>

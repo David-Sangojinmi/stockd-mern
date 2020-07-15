@@ -39,7 +39,7 @@ const Feedback = () => (
               <div className="ci-row">
                 <i className="theme-bg ti-email"></i>
                 <label>Email</label>
-                <span>davidsangojinmi@gmail.com</span>
+                <span>davidsangojinmi @gmail.com</span>
               </div>
               <div className="ci-row">
                 <i className="theme-bg ti-direction"></i>
