@@ -113,7 +113,7 @@ class Account extends Component {
                 <h3>Company Profiles</h3>
               </div>
               <div className="col-md-12 col-lg-3 dashboard-bg tab-header">
-                <h3>Key Statistics</h3>
+                <h3>Key Stats</h3>
               </div>
               <div className="col-md-12 col-lg-3 dashboard-bg tab-header">
                 <h3>Stock Data</h3>
