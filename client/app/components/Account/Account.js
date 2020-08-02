@@ -127,7 +127,7 @@ class Account extends Component {
                       style={{ logoutStyle }}
                       onClick={this.useraction.logout}
                     >
-                      Logout
+                      LOGOUT
                     </button>
                   </Link>
                 </div>
