@@ -15,7 +15,8 @@
     "build": "node build"
   },
   "engines": {
-    "node": ">=6"
+    "node": ">=6",
+    "npm": "6.x"
   },
   "dependencies": {
     "@babel/core": "^7.0.0-beta.42",
