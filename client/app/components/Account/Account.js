@@ -106,17 +106,20 @@ class Account extends Component {
 
     return (
       <>
-        <section
-          className="dashboard-section bg-no-repeat bg-cover bg-fixed tint-bg-2"
-          style={bgStyle}
-        >
+        <section className="dashboard-section bg-no-repeat bg-cover bg-fixed tint-bg-2" style={bgStyle}>
           <div className="container">
             <div className="row">
-              <div className="col-md-12 col-lg-10 dashboard-bg">
-                <h1>Welcome back!</h1>
+              <div className="col-md-12 col-lg-4 dashboard-bg tab-header">
+                <h3>Company Profiles</h3>
+              </div>
+              <div className="col-md-12 col-lg-3 dashboard-bg tab-header">
+                <h3>Key Statistics</h3>
+              </div>
+              <div className="col-md-12 col-lg-3 dashboard-bg tab-header">
+                <h3>Stock Data</h3>
               </div>
               <div className="col-md-12 col-lg-2 dashboard-bg">
-                <div className="centered">
+                <div className="logout-div">
                   <Link to="/">
                     <button
                       className="m-btn-db m-btn-theme"

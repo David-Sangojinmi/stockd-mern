@@ -2,7 +2,7 @@
   "name": "stockd-mern-app",
   "version": "1.0.0",
   "description": "MERN stack stock tracker project",
-  "author": "Eugene Cheung",
+  "author": "David Sangojinmi",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/arkon/MERN-boilerplate.git"
@@ -11,7 +11,8 @@
   "private": true,
   "scripts": {
     "start": "webpack -p --progress --profile --colors && node server",
-    "start:dev": "node server"
+    "start:dev": "node server",
+    "build": "node build"
   },
   "engines": {
     "node": ">=6"
