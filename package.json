@@ -7,10 +7,10 @@
     "type": "git",
     "url": "git+https://github.com/arkon/MERN-boilerplate.git"
   },
-  "license": "MIT",
+  "license": "ISC",
   "private": true,
   "scripts": {
-    "start": "webpack && node server",
+    "start": "node server",
     "start:dev": "node server"
   },
   "engines": {

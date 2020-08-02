@@ -65,8 +65,12 @@ if (isDev) {
   });
 }
 
-app.listen(port, host, function() {
-  console.log("Server started.......");
+app.listen(port, host, err => {
+  if (err) {
+    console.log(err);
+  }
+
+  console.info(">>> 🌎 Open http://0.0.0.0:%s/ in your browser.", port);
 });
 
 module.exports = app;
