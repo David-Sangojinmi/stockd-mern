@@ -1,7 +1,7 @@
 {
-  "name": "stockd-mern-app",
+  "name": "stockd-tracker",
   "version": "1.0.0",
-  "description": "MERN stack stock tracker project",
+  "description": "Track the profiles of different publicly listed companies, and their stock prices.",
   "author": "David Sangojinmi",
   "repository": {
     "type": "git",
@@ -11,8 +11,7 @@
   "private": true,
   "scripts": {
     "start": "webpack -p --progress --profile --colors && node server",
-    "start:dev": "node server",
-    "build": "node build"
+    "start:dev": "node server"
   },
   "engines": {
     "node": ">=6",
