@@ -12,7 +12,7 @@ const webpackConfig = require("../webpack.config");
 
 const isDev = process.env.NODE_ENV !== "production";
 const host = "0.0.0.0";
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8080;
 
 // Configuration
 // ================================================================================================
