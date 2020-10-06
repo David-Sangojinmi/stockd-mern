@@ -1,8 +1,13 @@
 # Stock'd Tracker
 
-Company Profiles. <img src="company-information.png"/>
-Key Data. <img src="technical-indicators.png"/>
-Stock Data. <img src="stock-data.png"/>
+Company Profiles.
+<img src="company-information.png"/>
+
+Key Data.
+<img src="technical-indicators.png"/>
+
+Stock Data.
+<img src="stock-data.png"/>
 
 
 ## Requirements
