@@ -1,10 +1,8 @@
-# MERN-boilerplate
+# Stock'd Tracker
 
-This is a boilerplate project using the following technologies:
-- [React](https://facebook.github.io/react/) and [React Router](https://reacttraining.com/react-router/) for the frontend
-- [Express](http://expressjs.com/) and [Mongoose](http://mongoosejs.com/) for the backend
-- [Sass](http://sass-lang.com/) for styles (using the SCSS syntax)
-- [Webpack](https://webpack.github.io/) for compilation
+Company Profiles. <img src="company-information.png"/>
+Key Data. <img src="technical-indicators.png"/>
+Stock Data. <img src="stock-data.png"/>
 
 
 ## Requirements
