@@ -30,10 +30,10 @@ const About = () => (
                   the application and start tracking the stocks of your favourite companies, follow
                   the steps below.
                 </p>
-                <p>1. </p>
+                {/* <p>1. </p>
                 <p>2. </p>
                 <p>3. </p>
-                <p>4. </p>
+                <p>4. </p> */}
               </div>
             </div>
           </div>
