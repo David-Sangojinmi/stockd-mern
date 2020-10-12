@@ -30,10 +30,14 @@ const About = () => (
                   the application and start tracking the stocks of your favourite companies, follow
                   the steps below.
                 </p>
-                {/* <p>1. </p>
-                <p>2. </p>
-                <p>3. </p>
-                <p>4. </p> */}
+                <br/>
+                <p>1. Login or create an account using the details asked for.</p>
+                <br/>
+                <p>2. Navigate to either the company information section or stock data section.</p>
+                <br/>
+                <p>3. Enter the stock symbol of the company you wish to track.</p>
+                <br/>
+                <p>4. Go through the key indicators and/or all the past historical stock data.</p>
               </div>
             </div>
           </div>
@@ -71,7 +75,7 @@ const About = () => (
                       </i>
                       <div className="feature-content">
                         <h5>Express.js</h5>
-                        <p>A back-end application framework. Fase and minimalist.</p>
+                        <p>A back-end application framework. Fast and minimalist.</p>
                       </div>
                     </div>
                   </div>
