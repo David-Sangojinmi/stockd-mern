@@ -15,17 +15,18 @@ module.exports = merge(commonConfig, {
 
   plugins: [
     new UglifyJsPlugin({
+      cache: true,
+      parallel: true,
       uglifyOptions: {
-        warnings: false,
-        ie8: false,
-        output: {
-          comments: false
-        }
-      }
+        compress: false,
+        ecma: 6,
+        mangle: true
+      },
+      sourceMap: true
     })
   ],
 
-  optimization: {
-    minimize: false
-  }
+  // optimization: {
+  //   minimize: false
+  // }
 });
