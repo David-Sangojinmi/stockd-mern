@@ -1,4 +1,5 @@
-const webpack = require("webpack");
+// const webpack = require("webpack");
+const UglifyJsPlugin = require("uglifyjs-3-webpack-plugin");
 const merge = require("webpack-merge");
 
 const helpers = require("./helpers");
@@ -12,19 +13,19 @@ module.exports = merge(commonConfig, {
     chunkFilename: "[id].[hash].chunk.js"
   },
 
-  optimization: {
-    minimize: false
-  },
-  
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      compressor: {
+    new UglifyJsPlugin({
+      uglifyOptions: {
         warnings: false,
-        screw_ie8: true
-      },
-      output: {
-        comments: false
+        ie8: false,
+        output: {
+          comments: false
+        }
       }
     })
-  ]
+  ],
+
+  optimization: {
+    minimize: false
+  }
 });
