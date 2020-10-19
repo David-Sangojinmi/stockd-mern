@@ -1,5 +1,4 @@
 {
-  "homepage": "http://davidsangojinmi.ml/stockd-mern",
   "name": "stockd-tracker",
   "version": "1.0.0",
   "description": "Track the profiles of different publicly listed companies, and their stock prices.",
@@ -13,7 +12,7 @@
   "scripts": {
     "start": "webpack -p --progress --profile --colors && node server",
     "start:dev": "node server",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d webpack -p --progress --profile --colors && node server"
   },
   "engines": {
     "node": ">=6",
