@@ -12,7 +12,6 @@
   "scripts": {
     "start": "webpack -p --progress --profile --colors && node server",
     "start:dev": "node server",
-    "deploy": "gh-pages -d webpack -p --progress --profile --colors && node server"
   },
   "engines": {
     "node": ">=6",

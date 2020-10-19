@@ -1,1 +1,1 @@
-web:node deploy
+web:node start

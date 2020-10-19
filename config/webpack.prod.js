@@ -14,19 +14,18 @@ module.exports = merge(commonConfig, {
   },
 
   plugins: [
-    new UglifyJsPlugin({
-      cache: true,
-      parallel: true,
-      uglifyOptions: {
-        compress: false,
-        ecma: 6,
-        mangle: true
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        warnings: false,
+        screw_ie8: true
       },
-      sourceMap: true
+      output: {
+        comments: false
+      }
     })
   ],
 
-  // optimization: {
-  //   minimize: false
-  // }
+  optimization: {
+    minimize: false
+  }
 });
