@@ -1,4 +1,5 @@
 {
+  "homepage": "http://davidsangojinmi.ml/stockd-mern",
   "name": "stockd-tracker",
   "version": "1.0.0",
   "description": "Track the profiles of different publicly listed companies, and their stock prices.",
@@ -11,7 +12,8 @@
   "private": true,
   "scripts": {
     "start": "webpack -p --progress --profile --colors && node server",
-    "start:dev": "node server"
+    "start:dev": "node server",
+    "deploy": "gh-pages -d build"
   },
   "engines": {
     "node": ">=6",
@@ -31,6 +33,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.16.3",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "gh-pages": "^3.1.0",
     "html-webpack-plugin": "^3.1.0",
     "mongoose": "^5.0.11",
     "node-sass": "^4.7.2",
