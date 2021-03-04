@@ -15,7 +15,7 @@ import "./styles/styles.scss";
 import "./styles/color/default.scss";
 
 render(
-  <Router>
+  <Router basename={window.location.pathname || ''}>
     <App>
       <Switch>
         <Route exact path="/" component={Main} />

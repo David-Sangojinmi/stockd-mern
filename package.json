@@ -4,10 +4,6 @@
   "description": "Track the profiles of different publicly listed companies, and their stock prices.",
   "author": "David Sangojinmi",
   "homepage": "http://davidsangojinmi.ml/stockd-mern/",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/David-Sangojinmi/stockd-mern.git"
-  },
   "license": "ISC",
   "private": true,
   "scripts": {
