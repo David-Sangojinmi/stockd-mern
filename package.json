@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Track the profiles of different publicly listed companies, and their stock prices.",
   "author": "David Sangojinmi",
+  "homepage": "http://davidsangojinmi.ml/stockd-mern/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/David-Sangojinmi/stockd-mern.git"
@@ -10,8 +11,12 @@
   "license": "ISC",
   "private": true,
   "scripts": {
-    "start": "webpack -p --progress --profile --colors && node server",
-    "start:dev": "node server"
+    "start:dev": "node server",
+    "build": "webpack -p --progress --profile --colors && node server",
+    "start": "webpack -p --progress --profile --colors",
+    "postbuild": "webpack -p --progress --profile --colors",
+    "deploy": "gh-pages -d dist",
+    "postdeploy": "npm run postbuild && gh-pages -d dist"
   },
   "engines": {
     "node": ">=6",
