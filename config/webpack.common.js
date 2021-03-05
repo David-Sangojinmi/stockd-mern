@@ -16,7 +16,7 @@ module.exports = {
 
   output: {
     path: helpers.root("dist"),
-    publicPath: "/stockd-mern"
+    publicPath: "/stockd-mern/"
   },
 
   resolve: {
