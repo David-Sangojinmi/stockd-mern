@@ -15,7 +15,7 @@ import "./styles/styles.scss";
 import "./styles/color/default.scss";
 
 render(
-  <Router basename={window.location.pathname || ''}>
+  <Router basename="/stockd-mern">
     <App>
       <Switch>
         <Route exact path="/" component={Main} />
