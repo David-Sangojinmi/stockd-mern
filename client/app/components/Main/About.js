@@ -24,7 +24,7 @@ const About = () => (
                   frameworks in my projects. But I did have some experience with using Javascript,
                   particularly for building small scale games. Check out my game Odyss3y{" "}
                   <span id="coloured">
-                    <a href="http://davidsangojinmi.ml/ODYSS3Y">here</a>
+                    <a href="http://iamdavid.dev/ODYSS3Y">here</a>
                   </span>
                   . This greatly influenced the tech stack I decided to use for this project. To use
                   the application and start tracking the stocks of your favourite companies, follow

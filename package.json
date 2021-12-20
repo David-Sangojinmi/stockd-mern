@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Track the profiles of different publicly listed companies, and their stock prices.",
   "author": "David Sangojinmi",
-  "homepage": "http://davidsangojinmi.ml/stockd-mern/",
+  "homepage": "http://iamdavid.dev/stockd-mern/",
   "license": "ISC",
   "private": true,
   "scripts": {
